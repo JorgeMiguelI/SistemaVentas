@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="routing.js"></script>
+
+</head>
+<body ng-controller="homecontroller">
+    <br><br><br><br>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="padding-right: 150px">
+  <div style="padding: 5px">
+    <img src="Images/logoB.png" width="140px" height="50px">
+  </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <div id="Empleos">
+              <li class="nav-item ">
+              <a class="nav-item nav-link active" href="#/!"> <p class="texto" id="E">Empleos</p></a>
+              </li>
+            </div>
+          <div id="buscoP">
+          <li class="nav-item ">
+            <a class="nav-item nav-link active" href="#!BuscoPersonal">
+              <p class="texto" id="P"> Busco Personal  </p>
+              
+            </a>
+          </li>
+        </div>
+        <div id="PerfilE">
+          <li class="nav-item">
+            <a class="nav-item nav-link active" href="#!Empresas"><p class="texto" id="PE">Perfil de Empresas</p>  </a>
+              </i>
+          </li>
+        </div>
+        <div id="Vacantes">
+            <li class="nav-item">
+              <a class="nav-item nav-link active" href="#!vacantes"><p class="texto" id="V">mis Vacantes</p>  </a>
+                </i>
+            </li>
+          </div>
+        
+        </ul>
+        <ul class="navbar-nav ">
+          <div id="ofertas">
+          <li class="nav-item">
+            <a class="nav-item nav-link active" href="#!publicaOferta">
+             <p class="texto" id="PO">Publica Tu Oferta</p>  
+            </a>
+          </li>
+        </div>
+        <div id="soyempresa">
+            <li class="nav-item">
+              <a class="nav-item nav-link active" href="#!RegistroEmpresa">
+               <p class="texto" id="SP">Soy Empresa</p>  
+              </a>
+            </li>
+          </div>
+          <div id="loginE">
+          <li class="nav-item">
+            <a class="nav-item nav-link active" href="#!login">
+             <p class="texto" id="L">Login</p> 
+            </a>
+          </li>
+        </div>
+        <div id="Logout">
+          <li class="nav-item">
+              <a class="nav-item nav-link active" href="#!Salir">
+                <p class="texto" id="LO">Logout</p> 
+              </a>
+            </li>
+          </div>
+          <div id="agregaCu">
+          <li class="nav-item">
+            <a class="nav-item nav-link active" href="#!registroUser">
+            <button type="button" class="btn btn-primary btn-lg"> Sube tu Curriculum</button>
+            </a>
+          </li>
+        </div>  
+        </ul>
+      </div>
+    </nav>
+
+    <div ng-view></div>
+
+
+</body>
+</html>
