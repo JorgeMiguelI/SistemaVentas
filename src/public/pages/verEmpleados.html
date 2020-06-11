@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+</head>
+<body ng-controller= "verEmpleadosController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="text-align: center;">
+                <h1 style="text-align: center;">Ver Informacion de los Empleados</h1>
+                <br>
+                <form>
+                    <div class="form-row ">
+                        <div class="col-md-2">
+                          </div>
+                      <div class="col-md-6">
+                        <input list="refaccion" ng-model="empleado" value="" class="form-control mb-6">
+                        <datalist id="refaccion">
+                            <option ng-repeat="Empleado in Empleados" value="{{Empleado.id_empleado}}">{{Empleado.nombre}}</option>
+                        </datalist>
+                    </div>
+                      <div class="col-auto">
+                        <button type="button" ng-click="MostrarEmpleado()" class="btn btn-primary mb-2">Ver Informacion</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br>
+
+        <div class="row" id="DatosEmpleado">
+            <div class="col-md-12">
+                <div style="text-align: center;">
+                    <img src="../images/empresario.png" width="100px" height="100px" style="text-align: center;">
+                </div>
+                
+                <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input disabled type="text" class="form-control" name="nombre" aria-describedby="emailHelp" value="{{Emp.nombre}}">
+                      </div>
+                    
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Estado</label>
+                        <input disabled type="text" class="form-control" name="descripcion" value="{{Emp.estado}}">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Ciudad</label>
+                        <input disabled type="text" class="form-control" name="descripcion" value="{{Emp.ciudad}}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Domicilio</label>
+                        <input disabled type="text" class="form-control" name="precioCompra" value="{{Emp.domicilio}}">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Codigo Postal</label>
+                        <input disabled type="text" class="form-control" name="precioCompra" value="{{Emp.cp}}">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Telefono</label>
+                        <input disabled type="text" class="form-control" name="precioVenta" value="{{Emp.telefono}}">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input disabled type="text" class="form-control" name="existencia" value="{{Emp.email}}">
+                          </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Fecha de Nacimiento</label>
+                        <input disabled type="text" class="form-control" name="existencia" value="{{Emp.fecha_nacimiento}}">
+                      </div>
+                    </div>
+                    </form>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

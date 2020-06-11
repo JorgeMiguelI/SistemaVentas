@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="makePedidoFabricaController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1 style="text-align: center;">Hacer Pedidos a la Fabrica</h1>
+                <br>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                      <label for="staticEmail2" class="sr-only">Refaccion</label>
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Id de la refaccion">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                      
+                      <input list="refaccion" class="form-control" ng-model="refaccion" value="" class=" form-control ">
+                      <datalist id="refaccion">
+                          <option ng-repeat="Refaccion in Refacciones" value="{{Refaccion.id_refaccion}}">{{Refaccion.nombre}}</option>
+                      </datalist>
+                    </div>
+                    <button type="button" ng-click="getRefaccion()" class="btn btn-outline-dark">Buscar Refaccion</button>   <button type="button" ng-click="verTodas()" class="btn btn-outline-dark">Ver todas las refacciones</button>
+                  </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br>
+        <div id="BotonverPedido">
+        <button type="button" ng-click="verPedido()" class="btn btn-outline-primary" data-toggle="modal" data-target="#verPedido">Ver Pedido</button> <button type="button" ng-click="FinalizaPedido()" class="btn btn-outline-danger">Finalizar Registro de Pedido</button>
+        <div class="modal fade" id="verPedido">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 style="color: red">Mi Pedido</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Refaccion</th>
+                                    <th scope="col">Cantidad</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr ng-repeat="Refaccion in Pedido">
+                                    <th scope="row">{{Refaccion.id_refaccion}}</th>
+                                    <td>{{Refaccion.nombre}}</td>
+                                    <td>{{Refaccion.cant}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <br>
+        </div>
+        <br>
+        <div class="row" id="refa">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col" style="color: red;">Existencia</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Agregar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">{{ReFax.id_refaccion}}</th>
+                        <td><img src="../images/{{ReFax.imagen}}" width="50px" height="50px"></td>
+                        <td>{{ReFax.nombre}}</td>
+                        <td>${{ReFax.precio_venta}}</td>
+                        <td>{{ReFax.existencia}}</td>
+                        <td>{{ReFax.categoria}}</td>
+                        <td><button type="button" class="btn btn-outline-primary" ng-click="asigna(ReFax.id_refaccion)" data-toggle="modal" data-target="#agregaRefaccionId">Agrega a la Lista</button></td>
+                        <div class="modal fade" id="agregaRefaccionId">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2 style="color: red">Detalles de la Agregacion</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-12">
+                                          <form>
+                                            <div class="form-group">
+                                              <label for="cant">Numero de Refacciones a agregar:</label>
+                                              <input type="number" ng-model="cant" class="form-control" id="cant" placeholder="Numero de Refacciones">
+                                            </div>
+                                            
+                                          </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <div class="col-md-6" style="text-align: center;">
+                                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" ng-click="AgregaAPedido(cant)">Agrerar al Pedido</button>
+                                      </div>
+                                      <div class="col-md-6" style="text-align: center;">
+                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar </button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+
+
+        <div class="row" id="listaRefacciones">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col" style="color: red;">Existencia</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Agregar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="Refaccion in Refacciones">
+                        <th scope="row">{{Refaccion.id_refaccion}}</th>
+                        <td><img src="../images/{{Refaccion.imagen}}" width="50px" height="50px"></td>
+                        <td>{{Refaccion.nombre}}</td>
+                        <td>${{Refaccion.precio_venta}}</td>
+                        <td>{{Refaccion.existencia}}</td>
+                        <td>{{Refaccion.categoria}}</td>
+                        <td><button type="button" class="btn btn-outline-primary" ng-click="asigna(Refaccion.id_refaccion)" data-toggle="modal" data-target="#agregaRefaccion">Agrega a la Lista</button></td>
+                        <div class="modal fade" id="agregaRefaccion">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2 style="color: red">Detalles de la Agregacion</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-12">
+                                          <form>
+                                            <div class="form-group">
+                                              <label for="cant">Numero de Refacciones a agregar:</label>
+                                              <input type="number" ng-model="cant" class="form-control" id="cant" placeholder="Numero de Refacciones">
+                                            </div>
+                                            
+                                          </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <div class="col-md-6" style="text-align: center;">
+                                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" ng-click="AgregaAPedido(cant)">Agrerar al Pedido</button>
+                                      </div>
+                                      <div class="col-md-6" style="text-align: center;">
+                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar </button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

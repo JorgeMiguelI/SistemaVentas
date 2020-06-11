@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de Ventas</title>
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/Styls.css">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/dd1ace9147.js" crossorigin="anonymous"></script>
+    <script src="js/prueba.js"></script>
+    <script src="./Clases/Cliente.js"></script>
+    <script src="./Clases/Venta.js"></script>
+    <script src="./Clases/DetalleVenta.js"></script>
+    <script src="./Clases/Refaccion.js"></script>
+    <script src="./Clases/Empleado.js"></script>
+    <script src="./Clases/detalle_Pedido.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caladea&display=swap" rel="stylesheet">
+
 
     <script src="routing.js"></script>
 
 </head>
-<body ng-controller="homecontroller">
+<body style="font-family: 'Caladea', serif;" ng-controller="homecontroller">
     <br><br><br><br>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="padding-right: 150px">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="mainNav" style="padding-right: 150px">
   <div style="padding: 5px">
-    <img src="Images/logoB.png" width="140px" height="50px">
+    <img src="images/logo.png" width="140px" height="80px">
   </div>
       <button
         class="navbar-toggler"
@@ -38,70 +49,90 @@
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <div id="Empleos">
-              <li class="nav-item ">
-              <a class="nav-item nav-link active" href="#/!"> <p class="texto" id="E">Empleos</p></a>
-              </li>
-            </div>
-          <div id="buscoP">
+          <div id="home">
           <li class="nav-item ">
-            <a class="nav-item nav-link active" href="#!BuscoPersonal">
-              <p class="texto" id="P"> Busco Personal  </p>
-              
+            <a class="nav-item nav-link " href="#/!"> <p class="texto" id="E">Home</p></a>
+          </li>
+        </div>
+          <div id="ventas">
+          <li class="nav-item ">
+            <a class="nav-item nav-link " href="#!Ventas"> <p class="texto" id="E">Ventas</p></a>
+          </li>
+        </div>
+          <div id="administrar">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestionar Productos
             </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#!ConsultaProducto">Consultar Producto</a>
+              <a class="dropdown-item " href="#!AltaProducto">Registrar Producto</a>
+              <a class="dropdown-item" href="#!bajasProds">Dar de baja Producto</a>
+              <a class="dropdown-item" href="#!actualizaProds">Actualizar Producto</a>
+            </div>
           </li>
         </div>
-        <div id="PerfilE">
-          <li class="nav-item">
-            <a class="nav-item nav-link active" href="#!Empresas"><p class="texto" id="PE">Perfil de Empresas</p>  </a>
-              </i>
+        <div id="pedidosFabrica">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestionar Pedidos de la Fabrica
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#!misPedidos">Ver Pedidos</a>
+              <a class="dropdown-item " href="#!HacerPedidoFabrica">Hacer un Pedido</a>
+            </div>
           </li>
         </div>
-        <div id="Vacantes">
-            <li class="nav-item">
-              <a class="nav-item nav-link active" href="#!vacantes"><p class="texto" id="V">mis Vacantes</p>  </a>
-                </i>
-            </li>
-          </div>
+        <div id="surtir">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestionar Pedidos del Taller
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#!pedidosTaller">Ver Pedidos</a>
+              <a class="dropdown-item " href="#!surtirPedido">Surtir Pedidos</a>
+            </div>
+          </li>
+        </div>
+        <div id="empleados">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestionar Empleados
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#!verEmpleados">Ver Empleados</a>
+              <a class="dropdown-item " href="#!registraEmpleados">Registrar Empleado</a>
+              <a class="dropdown-item " href="#!updateEmpleado">Modificar Empleado</a>
+              <a class="dropdown-item " href="#!eliminaEmpleados">Dar de baja</a>
+            </div>
+          </li>
+        </div>
+        <div id="estadisticas">
+          <li class="nav-item ">
+            <a class="nav-item nav-link " href="#"> <p class="texto" id="E">Estadisticas</p></a>
+          </li>
+        </div>
+        <div id="admin">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle user" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-users-cog"></i>  {{usuario}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+            </div>
+          </li>
+        </div>
+        <div id="empleado">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle user" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-tie"></i>  {{usuario}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+            </div>
+          </li>
+        </div>
         
-        </ul>
-        <ul class="navbar-nav ">
-          <div id="ofertas">
-          <li class="nav-item">
-            <a class="nav-item nav-link active" href="#!publicaOferta">
-             <p class="texto" id="PO">Publica Tu Oferta</p>  
-            </a>
-          </li>
-        </div>
-        <div id="soyempresa">
-            <li class="nav-item">
-              <a class="nav-item nav-link active" href="#!RegistroEmpresa">
-               <p class="texto" id="SP">Soy Empresa</p>  
-              </a>
-            </li>
-          </div>
-          <div id="loginE">
-          <li class="nav-item">
-            <a class="nav-item nav-link active" href="#!login">
-             <p class="texto" id="L">Login</p> 
-            </a>
-          </li>
-        </div>
-        <div id="Logout">
-          <li class="nav-item">
-              <a class="nav-item nav-link active" href="#!Salir">
-                <p class="texto" id="LO">Logout</p> 
-              </a>
-            </li>
-          </div>
-          <div id="agregaCu">
-          <li class="nav-item">
-            <a class="nav-item nav-link active" href="#!registroUser">
-            <button type="button" class="btn btn-primary btn-lg"> Sube tu Curriculum</button>
-            </a>
-          </li>
-        </div>  
-        </ul>
       </div>
     </nav>
 

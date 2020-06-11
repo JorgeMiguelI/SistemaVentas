@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css"/>
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Home</title>
 </head>
 <body ng-controller="homecontroller">
-    <h1>Hola a Home</h1>
-    <div class="col-md-5" ng-repeat="Nombres in data">
-        <h1>{{Nombres.nombre}}</h1>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="text-align: center;">
+                <img src="../images/logo.png" width="250px" height="140px">
+                <h2>Login</h2>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form>
+                    <div class="form-group">
+                        <label for="correo">Correo</label>
+                        <input type="text" ng-model= "CorreoLogin" name="Correo" id="correo" placeholder="Correo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" ng-model="PassLogin" name="pass" id="pass" placeholder="Contraseña" class="form-control">
+                    </div>
+                    <button type="button" ng-click= "Login()" class="btn btn-outline-primary">Login</button>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
-    <button type="button" ng-click="agrega()"> Agregar Nombre</button>
 </body>
 </html>

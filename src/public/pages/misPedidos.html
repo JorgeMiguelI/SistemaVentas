@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="misPedidosController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Mis Pedidos</h1>
+                <br>
+                <button type="button" class="btn btn-outline-primary" ng-click="getNoSurtidos()">Pedidos sin ser Surtidos</button>
+                <button type="button" class="btn btn-outline-danger" ng-click="getSurtidos()">Pedidos Facturados</button>
+                <br><br>
+            </div>
+        </div>
+                <div class="row" id="NoSurtidos">
+                    <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"># de Pedido</th>
+                        <th scope="col">Fecha y Hora</th>
+                        <th scope="col">id Empleado</th>
+                        <th scope="col">Estatus de Pago</th>
+                        <th scope="col">Estatus del Envio</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="PedidoN in PedidosNo">
+                        <th scope="row">{{PedidoN.id_pedido}}</th>
+                        <td>{{PedidoN.fecha}}</td>
+                        <td>{{PedidoN.id_empleado}}</td>
+                        <td>{{PedidoN.estatus_pago}}</td>
+                        <td>{{PedidoN.status_envio}}</td>
+                        <td> <button type="button" class="btn btn-outline-primary" ng-click="VerPedido(PedidoN.id_pedido)">Ver Detalles</button> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+                <div class="row" id="Surtidos">
+                    <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"># de Pedido</th>
+                        <th scope="col">Fecha y Hora</th>
+                        <th scope="col">id Empleado</th>
+                        <th scope="col">Estatus de Pago</th>
+                        <th scope="col">Estatus del Envio</th>
+                        <th scope="col">Detalles</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="Pedido in Pedidos">
+                        <th scope="row">{{Pedido.id_pedido}}</th>
+                        <td>{{Pedido.fecha}}</td>
+                        <td>{{Pedido.id_empleado}}</td>
+                        <td>{{Pedido.estatus_pago}}</td>
+                        <td>{{Pedido.status_envio}}</td>
+                        <td> <button type="button" class="btn btn-outline-primary">Ver Factura</button> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+
+                <div class="row" id="Detalles">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col"># de Pedido</th>
+                                <th scope="col">Refaccion Solicitada</th>
+                                <th scope="col">Cantidad de Refacciones Solicitadas</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat= "Ped in DatosPedido" ng-repeat="nombreR in nombres">
+                                <th scope="row">{{Ped.id_pedido}}</th>
+                                <td> <button type="button" class="btn btn-outline-primary"  ng-click= verRefaccion(Ped.id_refaccion) data-toggle="modal" data-target="#verRefax">Ver Refaccion</button>
+                                  <div class="modal fade" id="verRefax">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h2 style="color: red">Refaccion</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-md-12">
+                                                    <table class="table">
+                                                        <thead class="thead-dark">
+                                                          <tr>
+                                                            <th scope="col">Id</th>
+                                                            <th scope="col">Imagen</th>
+                                                            <th scope="col">Refaccion</th>
+                                                            <th scope="col">Existencia</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <th scope="row">{{Refax.id_refaccion}}</th>
+                                                            <td><img src="../images/{{Refax.imagen}}" width="50px" height="50px"></td>
+                                                            <td>{{Refax.nombre}}</td>
+                                                            <td>{{Refax.existencia}}</td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              
+                                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </td>
+                                
+                                <td>{{Ped.cantidad_surtir}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+    </div>
+</body>
+</html>

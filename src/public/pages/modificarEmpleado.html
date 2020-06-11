@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="updateEmpleadoController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Actualiza La informacion de tus Empleados</h1>
+                <br>
+                <form>
+                    <div class="form-row ">
+                        <div class="col-md-2">
+                          </div>
+                      <div class="col-md-6">
+                        <input list="refaccion" ng-model="empleado" value="" class="form-control mb-6">
+                        <datalist id="refaccion">
+                            <option ng-repeat="Empleado in Empleados" value="{{Empleado.id_empleado}}">{{Empleado.nombre}}</option>
+                        </datalist>
+                    </div>
+                      <div class="col-auto">
+                        <button type="button" ng-click="getEmpleado()" class="btn btn-primary mb-2">Ver Informacion</button>
+                      </div>
+                    </div>
+                  </form>
+                  <br>
+                <form action="/ActualizaEmpleado" method="POST" enctype="multipart/form-data">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input type="text" class="form-control" value="{{Emp.nombre}}" name="nombre" placeholder="Nombre">
+                      </div>
+                    
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Estado</label>
+                        <input type="text" class="form-control" value="{{Emp.estado}}" name="estado" placeholder="Estado">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Ciudad</label>
+                        <input type="text" class="form-control" value="{{Emp.ciudad}}" name="ciudad" placeholder="Ciudad">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Domicilio</label>
+                        <input type="text" class="form-control" value="{{Emp.domicilio}}" name="domicilio" placeholder="Domicilio">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Codigo Postal</label>
+                        <input type="text" class="form-control" value="{{Emp.cp}}" name="cp" placeholder="CP">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputPassword1">Telefono</label>
+                        <input type="text" class="form-control" value="{{Emp.telefono}}" name="telefono" placeholder="Telefono">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input type="email" class="form-control" value="{{Emp.email}}" name="email" placeholder="E-mail">
+                          </div>
+                      
+                    </div>
+                    <button type="submit" ng-click="RegistraEmpleado()" class=" btn btn-outline-primary">Actualizar Empleado</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

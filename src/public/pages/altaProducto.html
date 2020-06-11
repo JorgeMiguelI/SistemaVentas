@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Producto</title>
+</head>
+<body ng-controller="altascontroller">
+    <br><br>
+    <div class="container">
+        <form action="/RegistroRefaccion" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="exampleInputEmail1">Nombre</label>
+                <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
+              </div>
+            
+              <div class="form-group col-md-7">
+                <label for="exampleInputPassword1">Descripcion</label>
+                <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="exampleInputPassword1">Precio de Compra</label>
+                <input type="text" class="form-control" name="precioCompra" placeholder="Precio de Venta">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="exampleInputPassword1">Precio de Venta</label>
+                <input type="text" class="form-control" name="precioVenta" placeholder="Precio de Compra">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="exampleInputPassword1">Existencia</label>
+                <input type="text" class="form-control" name="existencia" placeholder="Existencia">
+              </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="form-group col-md-4">
+                <label for="exampleInputPassword1">Categoria</label>
+                <select class="form-control" name="categoria"> 
+                  <option value=""></option>
+                  <option value="Afinacion">Afinacion</option>
+                  <option value="Frenos">Frenos</option>
+                  <option value="Suspension">Suspención</option>
+                  <option value="Clutch">Clutch de Embrague</option>
+                  <option value="Enfriamento">Enfriamento</option>
+                  <option value="Motor">Ajuste de Motor</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Imagen</label>
+                <input type="file" name="image">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Pieza</button>
+            </form>
+    </div>
+    <br><br><br><br><br><br><br>
+</body>
+</html>
