@@ -8,6 +8,25 @@ route.get('/', (req, res)=>{
     res.sendFile(path.resolve('src/public/index.html'));
 });
 
+route.post('/bloquea', (req, res)=>{
+    pool.query(' LOCK TABLES prueba write ', (err, datos)=>{
+        if(err){
+            res.status(400).send('Ocurrio un error');
+        }else{
+            res.send({info:"bien"});
+        }
+    });
+});
+route.post('/desbloquea', (req, res)=>{
+    pool.query('UNLOCK TABLES', (err, datos)=>{
+        if(err){
+            res.status(400).send('Ocurrio un error');
+        }else{
+            res.send({info:"bien"});
+        }
+    });
+});
+
 route.get('/Clientes', (req, res)=>{
     pool.query('SELECT *FROM cliente', (err, datos)=>{
         if(err){

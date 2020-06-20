@@ -730,6 +730,7 @@ app.controller('consultaRefax', function($scope, $http){
 });
 
 app.controller('homecontroller', function($scope, $http){
+    
     $scope.usuario= sessionStorage.getItem(2);
    if (sessionStorage.getItem(3) == "true"){ //si se logueo el administrador
         document.getElementById('home').style.display="none";
