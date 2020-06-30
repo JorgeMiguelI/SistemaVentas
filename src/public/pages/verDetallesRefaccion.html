@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="detallesController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Detalles de la Refaccion</h1>
+                <br>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="text-align: center;">
+                <img src="../images/{{Refaccion.imagen}}" width="150px" height="150px">
+                <h3>{{Refaccion.nombre}}</h3>
+                <p>{{Refaccion.Descripcion}}</p>
+                <h4>${{Refaccion.precio_venta}}</h4>
+                <h4>({{Refaccion.existencia}})</h4>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+</html>

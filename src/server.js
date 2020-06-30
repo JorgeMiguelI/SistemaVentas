@@ -66,6 +66,13 @@ module.exports= pool;
 
 // rutas
 app.use(require('./routes/rutas'));
+app.use(require('./routes/Clientes'));
+app.use(require('./routes/Empleados'));
+app.use(require('./routes/Refacciones'));
+app.use(require('./routes/Ventas'));
+app.use(require('./routes/Pedidos'));
+app.use(require('./routes/Facturas'));
+app.use(require('./routes/Pagos'));
 
 
 

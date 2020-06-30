@@ -8,6 +8,10 @@ app.config(function ($routeProvider){
         controller: 'homecontroller'
 
     })
+    .when('/pagos', {
+        templateUrl: 'pages/pagos.html',
+        controller: 'pagosController'
+    })
     .when('/Ventas', {
         templateUrl: 'pages/Ventas.html',
         controller: 'ventasController'
@@ -60,6 +64,10 @@ app.config(function ($routeProvider){
         templateUrl: 'pages/surtirPedidoTaller.html',
         controller: 'surtirController'
     })
+    .when('/verDetalles',{
+        templateUrl: 'pages/verDetallesRefaccion.html',
+        controller: 'detallesController'
+    })
     .otherwise({
         // when all else fails
         templateUrl: 'Pages/routeNotFound.html',
@@ -67,6 +75,140 @@ app.config(function ($routeProvider){
         });
 });
 //import Cliente from "./Clases/Cliente";
+app.controller('detallesController', function($scope, $http){
+    var data={
+        idRefaccion: sessionStorage.getItem(10)
+    }
+    $http.post('/Refacciones/idRefaccion', data)
+    .then(
+        function(response){
+            $scope.Refaccion= response.data.info;
+        },
+        function(response){
+            alert("algo salio mal")
+        }
+    )
+});
+app.controller('pagosController', function($scope, $http){
+    $http.get('/pedidosTaller')
+    .then(
+        function(response){
+            $scope.pedidos=response.data.info;
+        },
+        function(response){
+            alert("No se pudieron traer los pedidos");
+        }
+    )
+
+    $scope.Search= function(){
+        var data ={
+            idPedido: $scope.idPedido
+        };
+        $http.post('/pedidosTaller/Id', data)
+        .then(
+            function(response){
+                $scope.PedidoTaller= response.data.info;
+                $http.post('/getTotalPagos', data)
+                .then(
+                    function(response){
+                      $scope.totalPagado= response.data.info;
+                      if($scope.totalPagado== null){
+                          $scope.totalPagado=0;
+                          $scope.totalFaltante= $scope.PedidoTaller.total_pagar;
+                      }else{
+                          $scope.totalFaltante= $scope.PedidoTaller.total_pagar- $scope.totalPagado
+                      }
+                        
+                    },
+                    function(response){
+                        alert("No se pudo traer el total del pago");
+                    }
+                )
+            },
+            function(response){
+                alert("No se pudo traer el pedido");
+            }
+        )
+    }
+
+    $scope.RegistrarPago= function(){
+        if($scope.totalpagoregistrar > $scope.totalFaltante){
+            alert("El Pago que quieres supera lo que debes por tu pedido")
+        }else if($scope.totalpagoregistrar == $scope.totalFaltante){
+            var fecha= new Date()
+            var año= fecha.getFullYear();
+            var mes= fecha.getMonth()+1;
+            if(mes<10){
+                mes= "0"+mes;
+            }
+            var dia= fecha.getDay();
+            if(dia<10){
+                dia= "0"+dia;
+            }
+            var hora= fecha.getHours();
+            var min= fecha.getMinutes();
+            var seg= fecha.getSeconds();
+            const fechaPago= año+"-"+mes+"-"+dia + " "+hora+":"+min+":"+seg;
+            var data ={
+                fecha: fechaPago,
+                monto: $scope.totalpagoregistrar,
+                idPedido: $scope.idPedido,
+            }
+            $http.post('/registraPago', data)
+            .then(
+                function(response){
+                    var data ={
+                        idPedido: $scope.idPedido
+                    }
+                    $http.post('/Actualizaestatuspedido', data)
+                    .then(
+                        function(response){
+                            alert("El pago se ha realizado")
+                            location.reload();
+                        },
+                        function(response){
+                            alert("No se ha podido registra el pago");
+                        }
+                    )
+                },
+                function(response){
+                    alert("No se pudo registrar el pago");
+                }
+            )
+        }else{
+            //$scope.totalFaltante= $scope.totalFaltante-$scope.totalpagoregistrar
+            var fecha= new Date()
+            var año= fecha.getFullYear();
+            var mes= fecha.getMonth()+1;
+            if(mes<10){
+                mes= "0"+mes;
+            }
+            var dia= fecha.getDay();
+            if(dia<10){
+                dia= "0"+dia;
+            }
+            var hora= fecha.getHours();
+            var min= fecha.getMinutes();
+            var seg= fecha.getSeconds();
+            const fechaPago= año+"-"+mes+"-"+dia + " "+hora+":"+min+":"+seg;
+            var data ={
+                fecha: fechaPago,
+                monto: $scope.totalpagoregistrar,
+                idPedido: $scope.idPedido
+            }
+            $http.post('/registraPago', data)
+            .then(
+                function(response){
+                    alert("Se ha registrado el pago");
+                    location.reload()
+                },
+                function(response){
+                    alert("No se pudo registrar el pago");
+                }
+            )
+        }
+    }
+})
 app.controller('surtirController', function($scope, $http){
 
 })
@@ -681,6 +823,10 @@ app.controller('bajasProds', function($scope, $http){
 
 app.controller('consultaRefax', function($scope, $http){
     document.getElementById('Refac').style.display= "none";
+    $scope.verDetalles= function(idRefaccion){
+        sessionStorage.setItem(10, idRefaccion)
+        window.location.href="#!verDetalles"
+    }
     $http.post('/Refacciones')
     .then(
         function(response){
@@ -742,6 +888,7 @@ app.controller('homecontroller', function($scope, $http){
         document.getElementById('estadisticas').style.display="block";
         document.getElementById('admin').style.display="block";
         document.getElementById('empleado').style.display="none";
+        document.getElementById('pagos').style.display="none";
         //document.getElementById('logout').style.display="block";
    }else if(sessionStorage.getItem(4) == "true"){
         document.getElementById('home').style.display="none";
@@ -753,6 +900,7 @@ app.controller('homecontroller', function($scope, $http){
         document.getElementById('estadisticas').style.display="none";
         document.getElementById('admin').style.display="none";
         document.getElementById('empleado').style.display="block";
+        document.getElementById('pagos').style.display="block";
         //document.getElementById('logout').style.display="block";
    }else{
         document.getElementById('home').style.display="block";
@@ -764,6 +912,7 @@ app.controller('homecontroller', function($scope, $http){
         document.getElementById('estadisticas').style.display="none";
         document.getElementById('admin').style.display="none";
         document.getElementById('empleado').style.display="none";
+        document.getElementById('pagos').style.display="none";
         //document.getElementById('logout').style.display="none";
    }
     $scope.empleado=sessionStorage.getItem(4);
@@ -817,6 +966,11 @@ app.controller('homecontroller', function($scope, $http){
 });
 
 app.controller('ventasController', function($scope, $http){
+
+    $scope.verDetalles= function(idRefaccion){
+        sessionStorage.setItem(10, idRefaccion)
+        window.location.href="#!verDetalles"
+    }
     //location.reload();
     $scope.administrador= sessionStorage.getItem(3);
     $scope.empleado= sessionStorage.getItem(4);
@@ -853,6 +1007,7 @@ $scope.finalizarVentaCliente= function(){
             .then(
                 function(response){
                     $scope.idVenta= response.data.info;
+                    var cont =0;
                     for(var i =0;i<$scope.data.length;i++){
                         let detalleVenta= new DetalleVenta($scope.idVenta, $scope.data[i].id, $scope.data[i].cantidad)
                         
@@ -866,12 +1021,18 @@ $scope.finalizarVentaCliente= function(){
                                $http.post('/ActualizarExistencia', data)
                                .then(
                                    function(response){
-                                        alert("Se ha actualizado la refaccion");
+                                    cont++;
+                                    if(cont >= $scope.data.length-1){
+                                        $scope.data=[];
+                                        $scope.total=0
+                                        alert("La venta se ha registrado con exito");
+                                        location.reload();
+                                    }
+                                   },
+                                   function(response){
+                                       alert("Error al actualizar la existencia de la refaccion");
                                    }
-                               ),
-                               function(response){
-                                   alert("Error al actualizar la existencia de la refaccion");
-                               }
+                               )
                             },
                             function(response){
                                 alert("Error al guardar los detalles de la venta");
@@ -966,15 +1127,30 @@ $scope.Search= function(){
     var data={
         categoria: $scope.categoria
     }
-    $http.post('/Refacciones/categoria', data)
-.then(
-    function(response){
-        $scope.Refacciones=response.data.info;
-    },
-    function(response){
-        alert("Algo salio Mal");
+    var data2={
+        idRefaccion: $scope.refaccion
     }
-);
+    if($scope.refaccion == undefined || $scope.refaccion==""){
+        $http.post('/Refacciones/categoria', data)
+        .then(
+            function(response){
+            $scope.Refacciones=response.data.info;
+        },
+        function(response){
+            alert("Algo salio Mal");
+        }
+        );
+    }else{
+        $http.post('/RefaccionesVenta/idRefaccion', data2)
+        .then(
+            function(response){
+                $scope.Refacciones= response.data.info;
+            },
+            function(response){
+                alert("No se pudo traer la refaccion");
+            }
+        )
+    }
 }
 
     $scope.total=0;

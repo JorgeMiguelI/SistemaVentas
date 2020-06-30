@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-controller="pagosController">
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Registrar Pagos</h1>
+            </div>
+            
+            <div class="col-md-6">
+                <br>
+                <form>
+                    <div class="form-row">
+                      <div class="col-6">
+                        <select name="refaccion" id="refaccion" ng-model="idPedido" class="form-control">
+                          <option value=""># De Pedido</option>
+                          <option value="{{Pedido.id_pedido}}" ng-repeat="Pedido in pedidos">{{Pedido.id_pedido}}</option>
+                      </select>
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="btn btn-primary" ng-click="Search()"><i class="fas fa-search-plus"></i> Buscar</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-6">
+                <br>
+                <form>
+                    <div class="form-row">
+                      <div class="col-6">
+                        <input type="number" ng-model="totalpagoregistrar" class="form-control" placeholder="Total a registrar">
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="btn btn-primary" ng-click="RegistrarPago()">Registrar Pago</button>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+            <br><br><br>
+      
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"># de Pedido</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">estatus de pago</th>
+                    <th scope="col">estatus de surtido</th>
+                    <th scope="col">RFC del cliente</th>
+                    <th scope="col">Total a pagar</th>
+                    <th scope="col">Total Abonado</th>
+                    <th scope="col">Total Faltante</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{PedidoTaller.id_pedido}}</th>
+                    <td>{{PedidoTaller.fecha}}</td>
+                    <td>{{PedidoTaller.estatus_pago}}</td>
+                    <td>{{PedidoTaller.status_surtido}}</td>
+                    <td>{{PedidoTaller.rfc_cliente}}</td>
+                    <td>${{PedidoTaller.total_pagar}}</td>
+                    <td>{{totalPagado}}</td>
+                    <td>{{totalFaltante}}</td>
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+
+            
+        </div>
+    </div>
+</body>
+</html>
