@@ -2,74 +2,87 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/b96d05f45a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/Styls.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
+    <!-- <script src="https://kit.fontawesome.com/b96d05f45a.js" crossorigin="anonymous"></script> -->
+
+    <!-- <link rel="stylesheet" href="css/Styls.css"> -->
     <title>Home</title>
 </head>
 
-<body ng-controller="homecontroller">
+<body ng-controller="homecontroller" class="">
     <div class="fondo-login">
-        <br><br>
         <div class="">
-            <div class="row ">
-                <div class="col-md-4 "></div>
-                <div class="col-md-4 " style="text-align: center; ">
-                    <img src="../images/logo.png " class="img-responsive " width="250px " height="140px ">
-                    <h2 class="font-poop-bold mt-3 mb-3 ">Iniciar Sesión</h2>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 mt-4" style="text-align: center;">
+                    <img src="../images/logo.png " class="img-responsive" width="250px " height="140px " />
+                    <h2 class="font-poop font-bold mt-3 mb-3">Iniciar Sesión</h2>
                 </div>
-                <div class="col-md-4 "></div>
+                <div class="col-md-4"></div>
             </div>
 
-            <div class="row ">
-                <div class="col-md-4 "></div>
-                <div class="col-md-4 ">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <form>
-
-                        <div class="form-group ">
-                            <p class="font-poop-bold subheading ">Correo</p>
-                            <div class="form-row justify-content-center ">
-                                <div class="input-group mb-2 text-center col-11 ">
-                                    <div class="input-group-prepend ">
-                                        <div class="input-group-text ">
-                                            <i class="fa fa-envelope "></i>
+                        <div class="form-group">
+                            <p class="font-poop subheading">Correo</p>
+                            <div class="form-row justify-content-center">
+                                <div class="input-group mb-2 text-center col-11">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-envelope"></i>
                                         </div>
                                     </div>
                                     <!-- <input type="text " name="nombre " id="nombre " class="form-control " placeholder="Nombre de Titular " required aria-required="true " pattern="[A-Za-z ]{1,100} " title="Sólo letras Máximo 100 " required="required
             " data-validation-required-message="Por favor ingresa tu nombre. "> -->
-                                    <input type="text " ng-model="CorreoLogin " name="Correo " id="correo " placeholder="Correo " class="form-control font-poop-light ">
+                                    <input type="text " ng-model="CorreoLogin " name="Correo " id="correo " placeholder="Correo " class="form-control font-poop font-light" />
                                 </div>
-
                             </div>
-                            <p class="font-poop-bold subheading mt-3 ">Contraseña</p>
-                            <div class="form-row justify-content-center ">
-                                <div class="input-group mb-2 text-center col-11 ">
-                                    <div class="input-group-prepend ">
-                                        <div class="input-group-text ">
-                                            <i class="fa fa-lock "></i>
+                            <p class="font-poop subheading mt-3">Contraseña</p>
+                            <div class="form-row justify-content-center">
+                                <div class="input-group mb-2 text-center col-11">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-lock"></i>
                                         </div>
                                     </div>
-                                    <input type="password " ng-model="PassLogin " name="pass " id="pass " placeholder="Contraseña " class="form-control font-poop-light ">
+                                    <input type="password " ng-model="PassLogin " name="pass " id="pass " placeholder="Contraseña " class="form-control font-poop font-light" />
                                 </div>
                             </div>
-                            <div class="div mt-3 ">
-                                <div class="row ">
-                                    <div class="col text-right ">
-                                        <button type="button " ng-click="Login() " class="btn btn-success font-poop-bold ">Iniciar Sesión</button>
+                            <div class="div mt-3">
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <button type="button " ng-click="Login() " class="btn btn-success font-poop">
+                        Iniciar Sesión  <i class="fa fa-check"></i>
+                      </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="col">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="col">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
     </div>
-
-
 </body>
 
 </html>
