@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b96d05f45a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/Styls.css">
     <title>Home</title>
 </head>
+
 <body ng-controller="homecontroller">
-    <br><br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="text-align: center;">
-                <img src="../images/logo.png" width="250px" height="140px">
-                <h2>Login</h2>
+    <div class="fondo-login">
+        <br><br>
+        <div class="">
+            <div class="row ">
+                <div class="col-md-4 "></div>
+                <div class="col-md-4 " style="text-align: center; ">
+                    <img src="../images/logo.png " class="img-responsive " width="250px " height="140px ">
+                    <h2 class="font-poop-bold mt-3 mb-3 ">Iniciar Sesión</h2>
+                </div>
+                <div class="col-md-4 "></div>
             </div>
-            <div class="col-md-4"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <form>
-                    <div class="form-group">
-                        <label for="correo">Correo</label>
-                        <input type="text" ng-model= "CorreoLogin" name="Correo" id="correo" placeholder="Correo" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="password" ng-model="PassLogin" name="pass" id="pass" placeholder="Contraseña" class="form-control">
-                    </div>
-                    <button type="button" ng-click= "Login()" class="btn btn-outline-primary">Login</button>
-                   
-                </form>
+
+            <div class="row ">
+                <div class="col-md-4 "></div>
+                <div class="col-md-4 ">
+                    <form>
+
+                        <div class="form-group ">
+                            <p class="font-poop-bold subheading ">Correo</p>
+                            <div class="form-row justify-content-center ">
+                                <div class="input-group mb-2 text-center col-11 ">
+                                    <div class="input-group-prepend ">
+                                        <div class="input-group-text ">
+                                            <i class="fa fa-envelope "></i>
+                                        </div>
+                                    </div>
+                                    <!-- <input type="text " name="nombre " id="nombre " class="form-control " placeholder="Nombre de Titular " required aria-required="true " pattern="[A-Za-z ]{1,100} " title="Sólo letras Máximo 100 " required="required
+            " data-validation-required-message="Por favor ingresa tu nombre. "> -->
+                                    <input type="text " ng-model="CorreoLogin " name="Correo " id="correo " placeholder="Correo " class="form-control font-poop-light ">
+                                </div>
+
+                            </div>
+                            <p class="font-poop-bold subheading mt-3 ">Contraseña</p>
+                            <div class="form-row justify-content-center ">
+                                <div class="input-group mb-2 text-center col-11 ">
+                                    <div class="input-group-prepend ">
+                                        <div class="input-group-text ">
+                                            <i class="fa fa-lock "></i>
+                                        </div>
+                                    </div>
+                                    <input type="password " ng-model="PassLogin " name="pass " id="pass " placeholder="Contraseña " class="form-control font-poop-light ">
+                                </div>
+                            </div>
+                            <div class="div mt-3 ">
+                                <div class="row ">
+                                    <div class="col text-right ">
+                                        <button type="button " ng-click="Login() " class="btn btn-success font-poop-bold ">Iniciar Sesión</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
+
+
 </body>
+
 </html>
