@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Refacciones</title>
 </head>
+
 <body ng-controller="consultaRefax">
     <br><br>
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h1 style="text-align: center;">Consulta Refacciones</h1>
-                <br>
-                <form action="#">
+                <h1 class="font-poop text-center mb-3 animate__animated animate__fadeInRight"> <i class="fa fa-dolly-flatbed mr-3"></i> Consulta Refacciones</h1>
+                <hr>
+                <p class="text-center font-poop mb-2 animate__animated animate__fadeInLeft">Aquí podrás consultar la informaciónde las refacciones por categorías o por nombre de la refacción.</p>
+                <hr>
+
+                <form action="#" class="">
                     <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <label for="categoria">Categoria</label>
-                            <select name="categoria" ng-model="cat" id="categoria" class="form-control">
+                        <div class="form-group col-md-5 animate__animated animate__fadeInUp">
+                            <label for="categoria" class="font-poop"> <i class="fa fa-bars mr-2"></i> Categoria</label>
+                            <select name="categoria" ng-model="cat" id="categoria" class="form-control font-poop">
                                 <option value="">Categoria</option>
                                 <option value="Afinacion">Afinacion</option>
                                 <option value="Frenos">Frenos</option>
@@ -27,23 +32,23 @@
                                 <option value="Motor">Ajuste de Motor</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-5">
-                            <label for="refaccion">Refaccion</label>
-                           <select name="refaccion" id="refaccion" ng-model="refaccion" class="form-control">
+                        <div class="form-group col-md-5 animate__animated animate__fadeInUp ml-4">
+                            <label for="refaccion" class="font-poop"> <i class="fa fa-tools mr-2"></i> Refaccion</label>
+                            <select name="refaccion" id="refaccion" ng-model="refaccion" class="form-control font-poop">
                                <option value="">Nombre de la refaccion</option>
                                <option value="{{Ref.id_refaccion}}" ng-repeat="Ref in Refax">{{Ref.nombre}}</option>
                            </select>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <button type="button" ng-click="RefaccionesCat()" class="btn btn-outline-danger">Listar Por Categoria</button>  
+                    <div class="form-row animate__animated animate__fadeInUp">
+                        <div class="form-group col-md-5 text-right">
+                            <button type="button" ng-click="RefaccionesCat()" class="btn btn-outline-info"> <i class="fa fa-search"></i> Listar Por Categoria</button>
                         </div>
-                        <div class="form-group col-md-5">
-                            <button type="button" ng-click="getRefaccion()" class="btn btn-outline-danger">Buscar Refaccion</button>  
+                        <div class="form-group col-md-5 text-right">
+                            <button type="button" ng-click="getRefaccion()" class="btn btn-outline-info"> <i class="fa fa-search"></i> Buscar Refaccion</button>
                         </div>
                     </div>
-                   
+
                 </form>
             </div>
             <div class="col-md-2"></div>
@@ -51,25 +56,45 @@
         <div class="row" id="Refac" style="text-align: center;">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <img src="../images/{{ReFax.imagen}}" width="180px" height="130px">
-                <h4>{{ReFax.nombre}}</h4>
-                <p>{{ReFax.Descripcion}}</p>
-                <h4>${{ReFax.precio_venta}}</h4>
-                <h5 style="color: grey;">({{ReFax.existencia}})</h5>
-                
+                <div class="card border-info">
+                    <div class="card-body">
+                        <img src="../images/{{ReFax.imagen}}" class="card-img-top img-thumbnail">
+                        <small class="font-poop text-muted">Nombre:</small>
+                        <h4 class="card-title font-poop">{{ReFax.nombre}}</h4>
+                        <hr>
+                        <small class="font-poop text-muted">Descripción</small>
+                        <p class="font-poop card-text">{{ReFax.Descripcion}}</p>
+                        <hr>
+                        <small class="font-poop text-muted">Precio:</small>
+                        <h4 class="font-poop card-text">${{ReFax.precio_venta}}</h4>
+                        <hr>
+                        <small class="font-poop text-muted">Existencia</small>
+                        <h5 style="color: grey;">({{ReFax.existencia}})</h5>
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-4"></div>
         </div>
         <div class="row" id="Refacciones">
-            <div class="col-md-4" style="text-align: center;" ng-repeat="Refaccion in ProdsCategoria">
-                <img src="../images/{{Refaccion.imagen}}" width="180px" height="130px">
-                <h4>{{Refaccion.nombre}}</h4>
-                <h5 style="color: grey;">({{Refaccion.existencia}})</h5>
-                <button type="button" class="btn btn-danger" ng-click="verDetalles(Refaccion.id_refaccion)"><i class="fas fa-eye"></i> Ver Detalles</button>
+            <div class="col-md-3" style="text-align: center;" ng-repeat="Refaccion in ProdsCategoria">
+                <div class="card border-info animate__animated animate__fadeInLeft">
+                    <img src="../images/{{Refaccion.imagen}}" class="card-img-top img-thumbnail">
+
+                    <div class="card-body">
+                        <small class="font-poop text-muted">Nombre:</small>
+                        <h5 class="font-poop card-title text-center">{{Refaccion.nombre}}</h5>
+                        <hr>
+                        <small class="font-poop text-muted">Existencia:</small>
+                        <h5 style="color: grey;">({{Refaccion.existencia}})</h5>
+                        <button type="button" class="btn btn-info btn-block font-poop" ng-click="verDetalles(Refaccion.id_refaccion)"><i class="fas fa-eye"></i> Ver Detalles</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <br><br><br>
-    
+
 </body>
+
 </html>
