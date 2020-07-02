@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body ng-controller="updateEmpleadoController">
     <br><br>
-    <div class="container">
+    <div class="container font-poop">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="text-align: center;">Actualiza La informacion de tus Empleados</h1>
+                <h1 class="text-center text-primary animate__animated animate__fadeInLeft"> <i class="fa fa-user-cog"></i> Actualiza La informacion de tus Empleados</h1>
+                <hr>
+                <p class="text-center animate__animated animate__fadeInLeft">Consulta la información actual de los empleados por id, para poder así editarla de ser necesario.</p>
                 <br>
-                <form>
-                    <div class="form-row ">
-                        <div class="col-md-2">
-                          </div>
-                      <div class="col-md-6">
-                        <input list="refaccion" ng-model="empleado" value="" class="form-control mb-6">
-                        <datalist id="refaccion">
+                <form class="animate__animated animate__fadeIn">
+                    <div class="form-row mt-3 ">
+                        <div class="col-md-1 text-right">
+                            <span class="input-group-text text-center "><i class="fa fa-key text-center ml-4"></i></span>
+                        </div>
+                        <div class="col-md-6">
+
+                            <input list="refaccion" ng-model="empleado" value="" class="form-control mb-6">
+                            <datalist id="refaccion">
                             <option ng-repeat="Empleado in Empleados" value="{{Empleado.id_empleado}}">{{Empleado.nombre}}</option>
                         </datalist>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" ng-click="getEmpleado()" class="btn btn-primary mb-2">Ver Informacion</button>
+                        </div>
                     </div>
-                      <div class="col-auto">
-                        <button type="button" ng-click="getEmpleado()" class="btn btn-primary mb-2">Ver Informacion</button>
-                      </div>
-                    </div>
-                  </form>
-                  <br>
-                <form action="/ActualizaEmpleado" method="POST" enctype="multipart/form-data">
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Nombre</label>
-                        <input type="text" class="form-control" value="{{Emp.nombre}}" name="nombre" placeholder="Nombre">
-                      </div>
-                    
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Estado</label>
-                        <input type="text" class="form-control" value="{{Emp.estado}}" name="estado" placeholder="Estado">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Ciudad</label>
-                        <input type="text" class="form-control" value="{{Emp.ciudad}}" name="ciudad" placeholder="Ciudad">
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Domicilio</label>
-                        <input type="text" class="form-control" value="{{Emp.domicilio}}" name="domicilio" placeholder="Domicilio">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Codigo Postal</label>
-                        <input type="text" class="form-control" value="{{Emp.cp}}" name="cp" placeholder="CP">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Telefono</label>
-                        <input type="text" class="form-control" value="{{Emp.telefono}}" name="telefono" placeholder="Telefono">
-                      </div>
+                </form>
+                <br>
+                <form action="/ActualizaEmpleado" method="POST" enctype="multipart/form-data" class="animate__animated animate__fadeIn">
+                    <div class="form-row ">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1"><span class=""><i class=" mr-2 fa fa-user"></i></span> Nombre:</label>
+                            <input type="text" class="form-control" value="{{Emp.nombre}}" name="nombre" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-map"></i> Estado:</label>
+                            <input type="text" class="form-control" value="{{Emp.estado}}" name="estado" placeholder="Estado">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-city"></i> Ciudad:</label>
+                            <input type="text" class="form-control" value="{{Emp.ciudad}}" name="ciudad" placeholder="Ciudad">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="exampleInputPassword1">Email</label>
-                            <input type="email" class="form-control" value="{{Emp.email}}" name="email" placeholder="E-mail">
-                          </div>
-                      
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-road"></i> Domicilio:</label>
+                            <input type="text" class="form-control" value="{{Emp.domicilio}}" name="domicilio" placeholder="Domicilio">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="mr-2 fa fa-search-location"></i> Codigo Postal:</label>
+                            <input type="text" class="form-control" value="{{Emp.cp}}" name="cp" placeholder="CP">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="mr-2 fa fa-phone"></i> Teléfono:</label>
+                            <input type="text" class="form-control" value="{{Emp.telefono}}" name="telefono" placeholder="Telefono">
+                        </div>
                     </div>
-                    <button type="submit" ng-click="RegistraEmpleado()" class=" btn btn-outline-primary">Actualizar Empleado</button>
-                    </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-envelope"></i> Email:</label>
+                            <input type="email" class="form-control" value="{{Emp.email}}" name="email" placeholder="E-mail">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col text-right ">
+                            <button type="submit" ng-click="RegistraEmpleado()" class=" btn btn-success"> <i class="fa fa-floppy-o mr-2"></i> Actualizar Empleado</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </body>
+
 </html>
