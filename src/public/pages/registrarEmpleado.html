@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrar Empleado</title>
 </head>
+
 <body ng-controller="registroEmpleadosController">
     <br><br>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 style="text-align: center;">Registra Empleados</h1>
+            <div class="col-md-12 font-poop">
+                <h1 class="text-center text-primary animate__animated animate__fadeInRight "> <i class="fa fa-user-plus"></i> Registra Empleados</h1>
+                <hr>
+                <p class="mb-2 text-center animate__animated animate__fadeInRight">Da de alta un nuevo empleado llena los siguientes campos.</p>
                 <br>
-                <form>
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Nombre</label>
-                        <input type="text" class="form-control" ng-model="nombre" name="nombre" placeholder="Nombre">
-                      </div>
-                    
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Estado</label>
-                        <input type="text" class="form-control" ng-model="estado" name="estado" placeholder="Estado">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Ciudad</label>
-                        <input type="text" class="form-control" ng-model="ciudad" name="ciudad" placeholder="Ciudad">
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Domicilio</label>
-                        <input type="text" class="form-control" ng-model="domicilio" name="domicilio" placeholder="Domicilio">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Codigo Postal</label>
-                        <input type="text" class="form-control" ng-model="cp" name="cp" placeholder="CP">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Telefono</label>
-                        <input type="text" class="form-control" ng-model="tel" name="telefono" placeholder="Telefono">
-                      </div>
+                <form class="animate__animated animate__fadeIn">
+                    <div class="form-row ">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1"><i class=" mr-2 fa fa-user"></i> Nombre:</label>
+                            <input type="text" class="form-control" ng-model="nombre" name="nombre" placeholder="Nombre">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-map"></i> Estado:</label>
+                            <input type="text" class="form-control" ng-model="estado" name="estado" placeholder="Estado">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-city"></i> Ciudad:</label>
+                            <input type="text" class="form-control" ng-model="ciudad" name="ciudad" placeholder="Ciudad">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="exampleInputPassword1">Email</label>
-                            <input type="email" class="form-control" ng-model="email" name="email" placeholder="E-mail">
-                          </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" ng-model="fecha" name="fecha" placeholder="Fecha de Nacimiento">
-                      </div>
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-road"></i> Domicilio:</label>
+                            <input type="text" class="form-control" ng-model="domicilio" name="domicilio" placeholder="Domicilio">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="mr-2 fa fa-search-location"></i> Codigo Postal:</label>
+                            <input type="text" class="form-control" ng-model="cp" name="cp" placeholder="CP">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="mr-2 fa fa-phone"></i> Teléfono:</label>
+                            <input type="text" class="form-control" ng-model="tel" name="telefono" placeholder="Telefono">
+                        </div>
                     </div>
-                    <button type="button" ng-click="RegistraEmpleado()" class=" btn btn-outline-primary">Registrar Empleado</button>
-                    </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-envelope"></i> Email:</label>
+                            <input type="email" class="form-control" ng-model="email" name="email" placeholder="E-mail">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class=" mr-2 fa fa-calendar-alt"></i> Fecha de Nacimiento:</label>
+                            <input type="date" class="form-control" ng-model="fecha" name="fecha" placeholder="Fecha de Nacimiento">
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="col-lg-12 text-right ">
+                            <button type="button" ng-click="RegistraEmpleado()" class=" btn btn-success "><i class="fa fa-check mr-2"></i> Registrar Empleado</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </body>
+
 </html>
