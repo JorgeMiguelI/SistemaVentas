@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body ng-controller="detallesController">
     <br><br>
-    <div class="container">
+    <div class="container font-poop">
         <div class="row">
-            <div class="col-md-12">
-                <h1 style="text-align: center;">Detalles de la Refaccion</h1>
+            <div class="col-md-12 mb-2  animate__animated animate__fadeInLeft">
+                <h1 class="text-center text-primary"> <i class="fa fa-info-circle mr-2"></i>Detalles de la Refaccion</h1>
+                <hr>
                 <br>
             </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="text-align: center;">
-                <img src="../images/{{Refaccion.imagen}}" width="150px" height="150px">
-                <h3>{{Refaccion.nombre}}</h3>
-                <p>{{Refaccion.Descripcion}}</p>
-                <h4>${{Refaccion.precio_venta}}</h4>
-                <h4>({{Refaccion.existencia}})</h4>
+            <div class="col-md-4 "></div>
+            <div class="col-md-4 mb-5 " style="text-align: center; ">
+                <div class="card border border-info ">
+                    <div class="card-body bg-light ">
+                        <img src="../images/{{Refaccion.imagen}} " class="card-img-top  animate__animated animate__zoomIn" width="150px " height="150px ">
+                        <small class="text-center text-muted ">Nombre:</small>
+                        <h3 class="text-center card-title  animate__animated animate__fadeInLeft ">{{Refaccion.nombre}}</h3>
+                        <hr>
+                        <small class="text-center text-muted ">Descripción:</small>
+                        <p class="text-center card-text animate__animated animate__fadeInRight">{{Refaccion.Descripcion}}</p>
+                        <hr>
+                        <small class="text-center text-muted ">Precio:</small>
+                        <h4 class="text-center card-text animate__animated animate__fadeInUp">${{Refaccion.precio_venta}}</h4>
+                        <small class="text-center text-muted ">Existencia:</small>
+                        <h4 class="text-center card-text animate__animated animate__fadeInDown">({{Refaccion.existencia}})</h4>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4 "></div>
         </div>
     </div>
 </body>
+
 </html>
