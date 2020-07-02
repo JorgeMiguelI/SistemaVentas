@@ -36,7 +36,7 @@
 <body style="" ng-controller="homecontroller">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
         <div style="padding: 5px">
-            <img src="images/logo.png" class="img-responsive" width="140px" height="80px">
+            <img src="images/logo.png" class="img-responsive animate__animated animate__zoomIn" width="140px" height="80px">
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,30 +46,30 @@
                 <div class="col ">
                     <div class="collapse navbar-collapse " id="navbarCollapse">
                         <ul class="navbar-nav w-100 ">
-                            <div id="home" class="text-center">
+                            <div id="home" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item ">
                                     <a class="nav-item nav-link " href="#/!">
                                         <p class="texto" id="E">Home</p>
                                     </a>
                                 </li>
                             </div>
-                            <div id="ventas">
+                            <div id="ventas" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item ">
                                     <a class="nav-item nav-link " href="#!Ventas">
                                         <p class="texto" id="E">Ventas</p>
                                     </a>
                                 </li>
                             </div>
-                            <div id="administrar">
+                            <div id="administrar" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class=" fa fa-box"></i><br> Gestionar Productos
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!ConsultaProducto">Consultar Producto</a>
-                                        <a class="dropdown-item " href="#!AltaProducto">Registrar Producto</a>
-                                        <a class="dropdown-item" href="#!bajasProds">Dar de baja Producto</a>
-                                        <a class="dropdown-item" href="#!actualizaProds">Actualizar Producto</a>
+                                        <a class="dropdown-item" href="#!ConsultaProducto"> <i class="fa fa-eye mr-2"></i> Consultar Producto</a>
+                                        <a class="dropdown-item " href="#!AltaProducto"><i class="fa fa-plus mr-2"></i>Registrar Producto</a>
+                                        <a class="dropdown-item" href="#!bajasProds"><i class="fa fa-trash mr-2"></i>Dar de baja Producto</a>
+                                        <a class="dropdown-item" href="#!actualizaProds"><i class="fa fa-pen-square mr-2"></i>Actualizar Producto</a>
                                     </div>
                                 </li>
                             </div>
@@ -84,7 +84,7 @@
                         </div>
                     </li> -->
                             </div>
-                            <div id="surtir">
+                            <div id="surtir" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Gestionar Pedidos del Taller
@@ -95,27 +95,27 @@
                                     </div>
                                 </li>
                             </div>
-                            <div id="empleados">
+                            <div id="empleados" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-users"></i><br> Gestionar Empleados
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!verEmpleados">Ver Empleados</a>
-                                        <a class="dropdown-item " href="#!registraEmpleados">Registrar Empleado</a>
-                                        <a class="dropdown-item " href="#!updateEmpleado">Modificar Empleado</a>
-                                        <a class="dropdown-item " href="#!eliminaEmpleados">Dar de baja</a>
+                                        <a class="dropdown-item" href="#!verEmpleados"><i class="fa fa-eye mr-2"></i>Ver Empleados</a>
+                                        <a class="dropdown-item " href="#!registraEmpleados"><i class="fa fa-plus mr-2"></i>Registrar Empleado</a>
+                                        <a class="dropdown-item " href="#!updateEmpleado"><i class="fa fa-pen-square mr-2"></i>Modificar Empleado</a>
+                                        <a class="dropdown-item " href="#!eliminaEmpleados"><i class="fa fa-trash mr-2"></i>Dar de baja</a>
                                     </div>
                                 </li>
                             </div>
-                            <div id="pagos">
+                            <div id="pagos" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item ">
                                     <a class="nav-item nav-link " href="#!pagos">
                                         <p class="texto" id="E">Registrar Pagos</p>
                                     </a>
                                 </li>
                             </div>
-                            <div id="estadisticas">
+                            <div id="estadisticas" class="text-center mr-md-2 ml-md-2">
                                 <li class="nav-item ">
                                     <a class="nav-item nav-link text-center" href="#">
                                         <i class="fa fa-chart-bar"></i>
@@ -123,7 +123,7 @@
                                     </a>
                                 </li>
                             </div>
-                            <div id="admin" class="text-right">
+                            <div id="admin" class="text-right mr-md-2 ml-md-2">
                                 <div class="row text-right">
                                     <div class="col text-right">
                                         <li class="nav-item dropdown">
@@ -131,7 +131,7 @@
                                                 <i class="fas fa-users-cog"></i> {{usuario}}
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+                                                <a class="dropdown-item" href="#" ng-click="Logout()"><i class="fa fa-sign-out-alt mr-2"></i>logout</a>
                                             </div>
                                         </li>
                                     </div>
@@ -143,7 +143,7 @@
                                         <i class="fas fa-user-tie"></i> {{usuario}}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+                                        <a class="dropdown-item" href="#" ng-click="Logout()"><i class="fa fa-sign-out-alt mr-2"></i>logout</a>
                                     </div>
                                 </li>
                             </div>

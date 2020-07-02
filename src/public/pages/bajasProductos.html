@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dar de baja Productos</title>
 </head>
+
 <body ng-controller="bajasProds">
     <br><br>
-    <div class="container">
+    <div class="container font-poop">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h1 style="text-align: center;">Da de baja tus Refacciones</h1>
+                <h1 class="text-center text-primary fot-poop animate__animated animate__fadeInLeft"> <i class="fa fa-trash"></i> Da de baja tus Refacciones</h1>
+                <hr>
+                <p class="mb-4  text-center animate__animated animate__fadeInLeft"> Consulta por id el producto para después poder darlo de baja. </p>
                 <form action="#">
-                    <div class="form-group">
-                        <label for="refaccion">Id de la refaccion</label>
+                    <div class="form-group animate__animated animate__fadeIn">
+                        <label for="refaccion" class="font-poop"> <i class="fa fa-key mr-2"></i> Id de la refaccion</label>
                         <input list="refaccion" ng-model="refaccion" value="" class=" form-control ">
                         <datalist id="refaccion">
                             <option ng-repeat="Refaccion in Refacciones" value="{{Refaccion.id_refaccion}}">{{Refaccion.nombre}}</option>
                         </datalist>
                     </div>
-                    <button type="button" ng-click="getRefaccion()" class="btn btn-outline-dark">Buscar Producto</button>
+                    <button type="button" ng-click="getRefaccion()" class="btn btn-outline-info"> <i class="fa fa-search mr-2"></i> Buscar Producto</button>
                 </form>
             </div>
             <div class="col-md-2"></div>
@@ -29,17 +33,28 @@
         <div class="row" style="text-align: center;" id="refa">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <img src="../images/{{ReFax.imagen}}" width="180px" height="130px">
-                <h4>{{ReFax.nombre}}</h4>
-                <p>{{ReFax.Descripcion}}</p>
-                <h4>${{ReFax.precio_venta}}</h4>
-                <h5 style="color: grey;">({{ReFax.existencia}})</h5>
-               
-                <button type="button" class="btn btn-outline-danger" ng-click="DarBaja()">Dar de baja</button>
+                <div class="card border-info">
+                    <div class="card-body">
+                        <img src="../images/{{ReFax.imagen}}" class="card-img-top">
+                        <small class="text-center text-muted">Nombre:</small>
+                        <h4 class="card-title text-center">{{ReFax.nombre}}</h4>
+                        <hr>
+                        <small class="text-center text-muted">Descripción:</small>
+                        <p class="card-text">{{ReFax.Descripcion}}</p>
+                        <hr>
+                        <small class="text-center text-muted">Precio Venta:</small>
+                        <h4 class="card-text">${{ReFax.precio_venta}}</h4>
+                        <hr>
+                        <small class="text-center text-muted">Existencia:</small>
+                        <h5 style="color: grey;">({{ReFax.existencia}})</h5>
+                        <button type="button" class="btn btn-danger" ng-click="DarBaja()"><i class="fa fa-trash mr-2"></i> Dar de baja</button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4"></div>
         </div>
     </div>
     <br><br><br>
 </body>
+
 </html>
