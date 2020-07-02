@@ -1,65 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualiza Producto</title>
 </head>
-<body ng-controller= "actualizaController">
+
+<body ng-controller="actualizaController ">
     <br><br>
-    <div class="container">
+    <div class="container font-poop">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="text-align: center;">Actualiza la informacion de tus Refacciones</h1>
+                <h1 class="text-center text-primary animate__animated animate__fadeInRight"> <i class="fa fa-pen-square mr-2"></i> Actualiza la informacion de tus Refacciones</h1>
+                <hr>
+                <p> Consulta la información de la refaccion por Id para después actualizar los campos. </p>
                 <br>
-                <form class="form-inline">
+                <form class="form-inline mt-2">
                     <div class="form-group mb-2">
-                      <label for="staticEmail2" class="sr-only">Email</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Id de la refaccion">
+                        <label for="staticEmail2" class="sr-only">Email</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-key" ></i>
+                          </span>
+                            <input type="text" readonly class="form-control-plaintext ml-3" id="staticEmail2" value="Id de la refaccion">
+                        </div>
                     </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                      
-                      <input list="refaccion" ng-model="refaccion" value="" class=" form-control ">
-                      <datalist id="refaccion">
+                    <div class="form-group mx-sm-3 mb-2 animate__animated animate__fadeIn">
+
+                        <input list="refaccion" ng-model="refaccion" value="" class=" form-control ">
+                        <datalist id="refaccion">
                           <option ng-repeat="Refaccion in Refacciones" value="{{Refaccion.id_refaccion}}">{{Refaccion.nombre}}</option>
                       </datalist>
                     </div>
-                    <button type="button" ng-click="getRefaccion()" class="btn btn-outline-dark">Traer Info de la Refaccion</button>
-                  </form>
-                  <br>
+                    <button type="button" ng-click="getRefaccion()" class="btn btn-outline-info"> <i class="fa fa-search mr-2"></i> Traer Info de la Refaccion</button>
+                </form>
+                <br>
 
 
-                <form action="/ActualizaRefaccion" method="POST" enctype="multipart/form-data">
+                <form action="/ActualizaRefaccion" class="animate__animated animate__fadeIn" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
-                      <div class="form-group col-md-5">
-                        <label for="exampleInputEmail1">Nombre</label>
-                        <input type="text" value="{{ReFax.nombre}}" class="form-control" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
-                      </div>
-                    
-                      <div class="form-group col-md-7">
-                        <label for="exampleInputPassword1">Descripcion</label>
-                        <input type="text" value="{{ReFax.Descripcion}}" class="form-control" name="descripcion" placeholder="Descripcion">
-                      </div>
+                        <div class="form-group col-md-5">
+                            <label for="exampleInputEmail1"> <i class="fa fa-tools mr-2"></i>Nombre:</label>
+                            <input type="text" value="{{ReFax.nombre}}" class="form-control" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
+                        </div>
+
+                        <div class="form-group col-md-7">
+                            <label for="exampleInputPassword1"> <i class="fa fa-bars mr-2"></i>Descripcion:</label>
+                            <input type="text" value="{{ReFax.Descripcion}}" class="form-control" name="descripcion" placeholder="Descripcion">
+                        </div>
                     </div>
                     <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Precio de Compra</label>
-                        <input type="text" value="{{ReFax.Precio_compra}}" class="form-control" name="precioCompra" placeholder="Precio de Venta">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Precio de Venta</label>
-                        <input type="text" value="{{ReFax.precio_venta}}" class="form-control" name="precioVenta" placeholder="Precio de Compra">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Existencia</label>
-                        <input type="text" value="{{ReFax.existencia}}" class="form-control" name="existencia" placeholder="Existencia">
-                      </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="fa fa-dollar-sign mr-2"></i>Precio de Compra:</label>
+                            <input type="text" value="{{ReFax.Precio_compra}}" class="form-control" name="precioCompra" placeholder="Precio de Venta">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="fa fa-dollar-sign mr-2"></i>Precio de Venta:</label>
+                            <input type="text" value="{{ReFax.precio_venta}}" class="form-control" name="precioVenta" placeholder="Precio de Compra">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="fa fa-box mr-2"></i>Existencia:</label>
+                            <input type="text" value="{{ReFax.existencia}}" class="form-control" name="existencia" placeholder="Existencia">
+                        </div>
                     </div>
                     <div class="form-row">
-                      
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Categoria</label>
-                        <select class="form-control" name="categoria"> 
+
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="fa fa-list mr-2"></i>Categoria</label>
+                            <select class="form-control" name="categoria"> 
                           <option value="{{ReFax.categoria}}">{{ReFax.categoria}}</option>
                           <option value="Afinacion">Afinacion</option>
                           <option value="Frenos">Frenos</option>
@@ -68,20 +76,24 @@
                           <option value="Enfriamento">Enfriamento</option>
                           <option value="Motor">Ajuste de Motor</option>
                         </select>
-                      </div>
+                        </div>
                     </div>
                     <div class="form-row">
-
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputPassword1">Status</label>
-                        <input type="text" class="form-control" value="{{ReFax.status}}" name="status">
-                      </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputPassword1"><i class="fa fa-question mr-2"></i>Status</label>
+                            <input type="text" class="form-control" value="{{ReFax.status}}" name="status">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Actualizar Info</button>
-                    </form>
+                    <div class="form-row">
+                        <div class="col-lg-12 text-right col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-lg "><i class="fa fa-floppy-o mr-2"></i>Actualizar Info</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
