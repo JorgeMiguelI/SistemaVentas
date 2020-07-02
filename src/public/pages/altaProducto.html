@@ -1,63 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Nuevo Producto</title>
 </head>
+
 <body ng-controller="altascontroller">
     <br><br>
     <div class="container">
         <form action="/RegistroRefaccion" method="POST" enctype="multipart/form-data">
             <div class="form-row">
-              <div class="form-group col-md-5">
-                <label for="exampleInputEmail1">Nombre</label>
-                <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
-              </div>
-            
-              <div class="form-group col-md-7">
-                <label for="exampleInputPassword1">Descripcion</label>
-                <input type="text" class="form-control" name="descripcion" placeholder="Descripcion">
-              </div>
+                <div class="form-group col-md-5">
+                    <label for="exampleInputEmail1" class="font-poop">Nombre</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="spanNombre">
+                        <i class="fa fa-user"></i>
+                      </span>
+                        <input type="text" class="form-control font-poop" name="nombre" aria-describedby="spanNombre" placeholder="Ingresa el Nombre">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-7">
+                    <label for="exampleInputPassword1" class="font-poop">Descripcion</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="iconDescripcion">
+                        <i class="fa fa-list-alt"></i>
+                      </span>
+                        <input type="text" class="form-control font-poop" name="descripcion" aria-describedby="iconDescripcion" placeholder="Descripcion">
+                    </div>
+                </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="exampleInputPassword1">Precio de Compra</label>
-                <input type="text" class="form-control" name="precioCompra" placeholder="Precio de Venta">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="exampleInputPassword1">Precio de Venta</label>
-                <input type="text" class="form-control" name="precioVenta" placeholder="Precio de Compra">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="exampleInputPassword1">Existencia</label>
-                <input type="text" class="form-control" name="existencia" placeholder="Existencia">
-              </div>
+                <div class="form-group col-md-4">
+                    <label for="exampleInputPassword1" class="font-poop">Precio de Compra</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon"><i class="fa fa-dollar-sign"></i></span>
+                        <input type="text" class="form-control font-poop" name="precioCompra" placeholder="Precio de Venta">
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="exampleInputPassword1" class="font-poop">Precio de Venta</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon"><i class="fa fa-hand-holding-usd"></i></span>
+                        <input type="text" class="form-control font-poop" name="precioVenta" placeholder="Precio de Compra">
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="exampleInputPassword1" class="font-poop">Existencia</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon"><i class="fa fa-box"></i></span>
+                        <input type="number" min="1" max="9999" class="form-control font-poop" name="existencia" placeholder="Existencia">
+                    </div>
+                </div>
             </div>
             <div class="form-row">
-              
-              <div class="form-group col-md-4">
-                <label for="exampleInputPassword1">Categoria</label>
-                <select class="form-control" name="categoria"> 
-                  <option value=""></option>
-                  <option value="Afinacion">Afinacion</option>
-                  <option value="Frenos">Frenos</option>
-                  <option value="Suspension">Suspención</option>
-                  <option value="Clutch">Clutch de Embrague</option>
-                  <option value="Enfriamento">Enfriamento</option>
-                  <option value="Motor">Ajuste de Motor</option>
-                </select>
-              </div>
+
+                <div class="form-group col-md-4">
+                    <label for="exampleInputPassword1" class="font-poop">Categoria</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-bars"></i></span>
+                        <select class="form-control font-poop" name="categoria">                   
+                      <option value="Afinacion" selected="selected">Afinacion</option>
+                      <option value="Frenos">Frenos</option>
+                      <option value="Suspension">Suspención</option>
+                      <option value="Clutch">Clutch de Embrague</option>
+                      <option value="Enfriamento">Enfriamento</option>
+                      <option value="Motor">Ajuste de Motor</option>
+                    </select>
+                    </div>
+                </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="exampleInputPassword1">Imagen</label>
-                <input type="file" name="image">
-              </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1" class="font-poop">Imagen</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-file"></i></span>
+                        <input type="file" class="form-control-file font-poop" name="image">
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar Pieza</button>
-            </form>
+            <div class="form-row">
+                <div class="col text-right">
+                    <button type="submit" class="btn btn-success font-poop btn-sm-block">Registrar Pieza <i class="fa fa-check" ></i></button>
+                </div>
+            </div>
+        </form>
     </div>
     <br><br><br><br><br><br><br>
 </body>
+
 </html>
