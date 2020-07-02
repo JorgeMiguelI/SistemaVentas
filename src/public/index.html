@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/Styls.css">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,114 +32,124 @@
 
 </head>
 
-<body style="font-family: 'Caladea', serif;" ng-controller="homecontroller">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav" style="padding-right: 150px">
+<body style="" ng-controller="homecontroller">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
         <div style="padding: 5px">
             <img src="images/logo.png" class="img-responsive" width="140px" height="80px">
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <div id="home">
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link " href="#/!">
-                            <p class="texto" id="E">Home</p>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-fluid">
+            <div class="row container-fluid">
+                <div class="col ">
+                    <div class="collapse navbar-collapse " id="navbarCollapse">
+                        <ul class="navbar-nav w-100 ">
+                            <div id="home" class="text-center">
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link " href="#/!">
+                                        <p class="texto" id="E">Home</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="ventas">
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link " href="#!Ventas">
+                                        <p class="texto" id="E">Ventas</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="administrar">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class=" fa fa-box"></i><br> Gestionar Productos
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!ConsultaProducto">Consultar Producto</a>
+                                        <a class="dropdown-item " href="#!AltaProducto">Registrar Producto</a>
+                                        <a class="dropdown-item" href="#!bajasProds">Dar de baja Producto</a>
+                                        <a class="dropdown-item" href="#!actualizaProds">Actualizar Producto</a>
+                                    </div>
+                                </li>
+                            </div>
+                            <div id="pedidosFabrica">
+                                <!---- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gestionar Pedidos de la Fabrica
                         </a>
-                    </li>
-                </div>
-                <div id="ventas">
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link " href="#!Ventas">
-                            <p class="texto" id="E">Ventas</p>
-                        </a>
-                    </li>
-                </div>
-                <div id="administrar">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gestionar Productos
-            </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#!ConsultaProducto">Consultar Producto</a>
-                            <a class="dropdown-item " href="#!AltaProducto">Registrar Producto</a>
-                            <a class="dropdown-item" href="#!bajasProds">Dar de baja Producto</a>
-                            <a class="dropdown-item" href="#!actualizaProds">Actualizar Producto</a>
+                            <a class="dropdown-item" href="#!misPedidos">Ver Pedidos</a>
+                            <a class="dropdown-item " href="#!HacerPedidoFabrica">Hacer un Pedido</a>
                         </div>
-                    </li>
+                    </li> -->
+                            </div>
+                            <div id="surtir">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Gestionar Pedidos del Taller
+                        </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!pedidosTaller">Ver Pedidos</a>
+                                        <a class="dropdown-item " href="#!surtirPedido">Surtir Pedidos</a>
+                                    </div>
+                                </li>
+                            </div>
+                            <div id="empleados">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-center" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-users"></i><br> Gestionar Empleados
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!verEmpleados">Ver Empleados</a>
+                                        <a class="dropdown-item " href="#!registraEmpleados">Registrar Empleado</a>
+                                        <a class="dropdown-item " href="#!updateEmpleado">Modificar Empleado</a>
+                                        <a class="dropdown-item " href="#!eliminaEmpleados">Dar de baja</a>
+                                    </div>
+                                </li>
+                            </div>
+                            <div id="pagos">
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link " href="#!pagos">
+                                        <p class="texto" id="E">Registrar Pagos</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="estadisticas">
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link text-center" href="#">
+                                        <i class="fa fa-chart-bar"></i>
+                                        <p class="texto" id="E">Estadisticas</p>
+                                    </a>
+                                </li>
+                            </div>
+                            <div id="admin" class="text-right">
+                                <div class="row text-right">
+                                    <div class="col text-right">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle user" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-users-cog"></i> {{usuario}}
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="empleado">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle user" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-user-tie"></i> {{usuario}}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-                <div id="pedidosFabrica">
-                    <!---- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gestionar Pedidos de la Fabrica
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#!misPedidos">Ver Pedidos</a>
-              <a class="dropdown-item " href="#!HacerPedidoFabrica">Hacer un Pedido</a>
             </div>
-          </li> -->
-                </div>
-                <div id="surtir">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gestionar Pedidos del Taller
-            </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#!pedidosTaller">Ver Pedidos</a>
-                            <a class="dropdown-item " href="#!surtirPedido">Surtir Pedidos</a>
-                        </div>
-                    </li>
-                </div>
-                <div id="empleados">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gestionar Empleados
-            </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#!verEmpleados">Ver Empleados</a>
-                            <a class="dropdown-item " href="#!registraEmpleados">Registrar Empleado</a>
-                            <a class="dropdown-item " href="#!updateEmpleado">Modificar Empleado</a>
-                            <a class="dropdown-item " href="#!eliminaEmpleados">Dar de baja</a>
-                        </div>
-                    </li>
-                </div>
-                <div id="pagos">
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link " href="#!pagos">
-                            <p class="texto" id="E">Registrar Pagos</p>
-                        </a>
-                    </li>
-                </div>
-                <div id="estadisticas">
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link " href="#">
-                            <p class="texto" id="E">Estadisticas</p>
-                        </a>
-                    </li>
-                </div>
-                <div id="admin">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle user" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-users-cog"></i> {{usuario}}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
-                        </div>
-                    </li>
-                </div>
-                <div id="empleado">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle user" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-tie"></i> {{usuario}}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#" ng-click="Logout()">logout</a>
-                        </div>
-                    </li>
-                </div>
-
         </div>
     </nav>
 

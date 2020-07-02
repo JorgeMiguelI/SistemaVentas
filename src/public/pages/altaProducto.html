@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,10 @@
 </head>
 
 <body ng-controller="altascontroller">
-    <br><br>
+    <div class="container mt-3 mb-2">
+        <h3 class="font-poop font-light">Alta de producto</h3>
+        <hr>
+    </div>
     <div class="container">
         <form action="/RegistroRefaccion" method="POST" enctype="multipart/form-data">
             <div class="form-row">
@@ -73,11 +76,14 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-8">
                     <label for="exampleInputPassword1" class="font-poop">Imagen</label>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-file"></i></span>
-                        <input type="file" class="form-control-file font-poop" name="image">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFilelang">
+                            <label class="custom-file-label" for="customFilelang" lang="es" name="image">Elegir Archivo</label>
+                        </div>
                     </div>
                 </div>
             </div>
