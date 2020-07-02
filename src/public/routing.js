@@ -85,7 +85,13 @@ app.controller('detallesController', function($scope, $http) {
                 $scope.Refaccion = response.data.info;
             },
             function(response) {
-                alert("algo salio mal")
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Algo salió mal!',
+                        footer: '<a href="#!">Ir a Inicio</a>'
+                    }));
             }
         )
 });
@@ -96,7 +102,13 @@ app.controller('pagosController', function($scope, $http) {
                 $scope.pedidos = response.data.info;
             },
             function(response) {
-                alert("No se pudieron traer los pedidos");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No se pudieron obtener pedidos!',
+                        footer: '<a href="#!">Ir a Inicio</a>'
+                    }));
             }
         )
 
@@ -121,19 +133,37 @@ app.controller('pagosController', function($scope, $http) {
 
                             },
                             function(response) {
-                                alert("No se pudo traer el total del pago");
+                                $(document).ready(
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'No se pudo obtener el total de pago!',
+                                        footer: '<a href="#!">Ir a Inicio</a>'
+                                    }));
                             }
                         )
                 },
                 function(response) {
-                    alert("No se pudo traer el pedido");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'No se pudo obtener el pedido!',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             )
     }
 
     $scope.RegistrarPago = function() {
         if ($scope.totalpagoregistrar > $scope.totalFaltante) {
-            alert("El Pago que quieres supera lo que debes por tu pedido")
+            $(document).ready(
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'El Pago que quieres supera lo que debes por tu pedido',
+                }));
+            // alert("El Pago que quieres supera lo que debes por tu pedido")
         } else if ($scope.totalpagoregistrar == $scope.totalFaltante) {
             var fecha = new Date()
             var año = fecha.getFullYear();
@@ -163,16 +193,34 @@ app.controller('pagosController', function($scope, $http) {
                         $http.post('/Actualizaestatuspedido', data)
                             .then(
                                 function(response) {
-                                    alert("El pago se ha realizado")
+                                    // alert("El pago se ha realizado")
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Éxito',
+                                            text: 'El pago se ha realizado',
+                                        }));
                                     location.reload();
                                 },
                                 function(response) {
-                                    alert("No se ha podido registra el pago");
+                                    // alert("No se ha podido registra el pago");
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'NO se ha podido registrar el pago',
+                                        }));
                                 }
                             )
                     },
                     function(response) {
-                        alert("No se pudo registrar el pago");
+                        // alert("No se pudo registrar el pago");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ocurrió un error',
+                                text: '"No se pudo realizar el pago',
+                            }));
                     }
                 )
         } else {
@@ -199,11 +247,23 @@ app.controller('pagosController', function($scope, $http) {
             $http.post('/registraPago', data)
                 .then(
                     function(response) {
-                        alert("Se ha registrado el pago");
+                        // alert("Se ha registrado el pago");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Éxito',
+                                text: 'El pago se ha registrado',
+                            }));
+                        location.reload();
                         location.reload()
                     },
                     function(response) {
-                        alert("No se pudo registrar el pago");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ocurrió un error',
+                                text: '"No se pudo registrar el pago',
+                            }));
                     }
                 )
         }
@@ -229,7 +289,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
                     $scope.PedidosNo = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             )
     }
@@ -244,7 +310,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
                     $scope.Pedidos = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             )
     }
@@ -274,14 +346,27 @@ app.controller('pedidosTallerController', function($scope, $http) {
                                     ///alert($scope.nombres.nombre)  
                                 },
                                 function(response) {
-                                    alert("Error al traer la refaccion")
+                                    // alert("Error al traer la refaccion");
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Ops',
+                                            text: 'No se pudo obtener la refaccion',
+                                            footer: '<a href="#!">Ir a Inicio</a>'
+                                        }));
                                 }
                             );
                     }
 
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             );
     }
@@ -299,7 +384,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
 
                 },
                 function(response) {
-                    alert("No se pudo traer la refaccion");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo traer la refacción',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             );
     }
@@ -317,7 +408,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
 
                 },
                 function(response) {
-                    alert("Mal")
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#!">Ir a Inicio</a>'
+                        }));
                 }
             )
 
@@ -345,7 +442,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
             $http.post('/GuardaFactura', data)
                 .then(
                     function(response) {
-                        alert("Factura Guardada");
+                        // alert("Factura Guardada");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Exito',
+                                text: 'Se guardó la factura',
+                            }));
                         var datos = {
                             id_pedido: $scope.IDpedido
                         };
@@ -366,7 +469,13 @@ app.controller('pedidosTallerController', function($scope, $http) {
                                                     }
                                                 },
                                                 function(response) {
-                                                    alert("No se actualizo la refaccion");
+                                                    $(document).ready(
+                                                        Swal.fire({
+                                                            icon: 'error',
+                                                            title: 'Ops',
+                                                            text: 'No se actualizó la refacción',
+                                                            footer: '<a href="#!">Ir a Inicio</a>'
+                                                        }));
                                                 }
                                             )
                                     }
@@ -379,13 +488,25 @@ app.controller('pedidosTallerController', function($scope, $http) {
                         //location.reload();
                     },
                     function(response) {
-                        alert("Error al guardar la factura")
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Algo salió mal, no se guardó la factura',
+                                footer: '<a href="#!">Ir a Inicio</a>'
+                            }));
                     }
                 )
 
 
         } else {
-            alert("Aun no has terminado de surtir el pedido");
+            // alert("Aun no has terminado de surtir el pedido");
+            $(document).ready(
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Ops',
+                    text: 'Aun no has terminado de surtir el pedido',
+                }));
         }
     }
 
@@ -419,17 +540,36 @@ app.controller('pedidosTallerController', function($scope, $http) {
                                             }
                                         },
                                         function(response) {
-                                            alert("No se pudo tarer la info del pedido");
+
+                                            // alert("No se pudo tarer la info del pedido");
+                                            $(document).ready(
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Ops',
+                                                    text: 'No se pudo obtener la información del pedido.',
+                                                }));
                                         }
                                     )
                             },
                             function(response) {
-                                alert("No se pudo traer la factura");
+                                // alert("No se pudo traer la factura");
+                                $(document).ready(
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Factura',
+                                        text: 'No se pudo obtener la factura',
+                                    }));
                             }
                         )
                 },
                 function(response) {
-                    alert("No se pudo Traer al Cliente");
+                    // alert("No se pudo Traer al Cliente");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Cliente',
+                            text: 'No se pudo obtener un cliente.',
+                        }));
                 }
             )
     }
@@ -451,7 +591,13 @@ app.controller('misPedidosController', function($scope, $http) {
                     $scope.PedidosNo = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#">Ir a inicio</a>'
+                        }));
                 }
             )
     }
@@ -465,7 +611,13 @@ app.controller('misPedidosController', function($scope, $http) {
                     $scope.Pedidos = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#">Ir a inicio</a>'
+                        }));
                 }
             )
     }
@@ -491,14 +643,26 @@ app.controller('misPedidosController', function($scope, $http) {
                                     ///alert($scope.nombres.nombre)  
                                 },
                                 function(response) {
-                                    alert("Error al traer la refaccion")
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Ops',
+                                            text: 'Error al obtner refacción.',
+
+                                        }));
                                 }
                             );
                     }
 
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                            footer: '<a href="#">Ir a inicio</a>'
+                        }));
                 }
             );
     }
@@ -516,7 +680,12 @@ app.controller('misPedidosController', function($scope, $http) {
 
                 },
                 function(response) {
-                    alert("No se pudo traer la refaccion");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo obtener la refacción.',
+                        }));
                 }
             );
     }
@@ -571,18 +740,36 @@ app.controller('makePedidoFabricaController', function($scope, $http) {
                                 function(response) {
                                     cont = cont + 1;
                                     if (cont == $scope.Pedido.length) {
-                                        alert("Todo Salio Bine");
+                                        // alert("Todo Salio Bine");
+                                        $(document).ready(
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Bien',
+                                                text: 'Todo salió bien',
+                                            }));
                                         location.reload();
                                     }
                                 },
                                 function(response) {
-                                    alert("No se registro el detalle del pedido");
+                                    // alert("No se registro el detalle del pedido");
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Ops',
+                                            text: 'No se registro el detalle del pedido',
+                                        }));
                                 }
                             )
                     }
                 },
                 function(response) {
-                    alert("No se registro el pedido");
+                    // alert("No se registro el pedido");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se registro el detalle del pedido',
+                        }));
                 }
             );
     }
@@ -596,7 +783,13 @@ app.controller('makePedidoFabricaController', function($scope, $http) {
                 //alert($scope.Refacciones[0].nombre);
             },
             function(response) {
-                alert("Salio Mal");
+                // alert("Salio Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal',
+                    }));
             }
         )
     $scope.getRefaccion = function() {
@@ -611,7 +804,12 @@ app.controller('makePedidoFabricaController', function($scope, $http) {
                     $scope.ReFax = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal',
+                        }));
                 }
             );
     }
@@ -628,7 +826,12 @@ app.controller('eliminaEmpleadoController', function($scope, $http) {
                 $scope.Empleados = response.data.info;
             },
             function(response) {
-                alert("Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal',
+                    }));
             }
         )
     $scope.getEmpleado = function() {
@@ -643,7 +846,13 @@ app.controller('eliminaEmpleadoController', function($scope, $http) {
                     //document.getElementById('DatosEmpleado').style.display= "flex";
                 },
                 function(response) {
-                    alert("No se pudo consultar al empleado");
+                    // alert("No se pudo consultar al empleado")
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo consultar al empleado.',
+                        }));
                 }
             )
     }
@@ -654,12 +863,24 @@ app.controller('eliminaEmpleadoController', function($scope, $http) {
         $http.post('/Empleados/Eliminarid', data)
             .then(
                 function(response) {
-                    alert("Se ha eliminado el Empleado");
+                    // alert("Se ha eliminado el Empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Eliminado',
+                            text: 'Se eliminó al empledo.',
+                        }));
                     location.reload();
                     //document.getElementById('DatosEmpleado').style.display= "flex";
                 },
                 function(response) {
-                    alert("No se pudo consultar al empleado");
+                    // alert("No se pudo consultar al empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo obtener al empleado',
+                        }));
                 }
             )
     }
@@ -672,7 +893,12 @@ app.controller('updateEmpleadoController', function($scope, $http) {
                 $scope.Empleados = response.data.info;
             },
             function(response) {
-                alert("Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Algo salió mal',
+                    }));
             }
         )
     $scope.getEmpleado = function() {
@@ -687,7 +913,12 @@ app.controller('updateEmpleadoController', function($scope, $http) {
                     //document.getElementById('DatosEmpleado').style.display= "flex";
                 },
                 function(response) {
-                    alert("No se pudo consultar al empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo obtener al empleado',
+                        }));
                 }
             )
     }
@@ -710,11 +941,23 @@ app.controller('registroEmpleadosController', function($scope, $http) {
         $http.post('/Registro/Empleados', empleado)
             .then(
                 function(response) {
-                    alert("Se ha registrado Correctamente el Empleado");
+                    // alert("Se ha registrado Correctamente el Empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien',
+                            text: 'Se registró al empleado correctamente',
+                        }));
                     location.reload();
                 },
                 function(response) {
-                    alert("Error al registrar el empleado");
+                    // alert("Error al registrar el empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se logró registrar el empleado',
+                        }));
                 }
             );
     }
@@ -729,7 +972,12 @@ app.controller('verEmpleadosController', function($scope, $http) {
                 $scope.Empleados = response.data.info;
             },
             function(response) {
-                alert("Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal ...',
+                    }));
             }
         )
     $scope.MostrarEmpleado = function() {
@@ -743,7 +991,13 @@ app.controller('verEmpleadosController', function($scope, $http) {
                     document.getElementById('DatosEmpleado').style.display = "flex";
                 },
                 function(response) {
-                    alert("No se pudo consultar al empleado");
+                    // alert("No se pudo consultar al empleado");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo obtener al empleado',
+                        }));
                 }
             )
     }
@@ -756,7 +1010,12 @@ app.controller('actualizaController', function($scope, $http) {
                 //alert($scope.Refacciones[0].nombre);
             },
             function(response) {
-                alert("Salio Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal ...',
+                    }));
             }
         );
     $scope.Ver = function() {
@@ -773,7 +1032,12 @@ app.controller('actualizaController', function($scope, $http) {
                     //alert($scope.Refax.status);
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal ...',
+                        }));
                 }
             );
     }
@@ -787,7 +1051,12 @@ app.controller('bajasProds', function($scope, $http) {
                 //alert($scope.Refacciones[0].nombre);
             },
             function(response) {
-                alert("Salio Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal ...',
+                    }));
             }
         )
     $scope.getRefaccion = function() {
@@ -801,7 +1070,12 @@ app.controller('bajasProds', function($scope, $http) {
                     $scope.ReFax = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal ...',
+                        }));
                 }
             );
     }
@@ -812,12 +1086,24 @@ app.controller('bajasProds', function($scope, $http) {
         $http.post('/Refacciones/Bajas', data)
             .then(
                 function(response) {
-                    alert("Se ha dado de Baja la pieza");
+                    // alert("Se ha dado de Baja la pieza");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Eliminado',
+                            text: 'Se ha dado de baja la pieza correctamente',
+                        }));
                     document.getElementById('refa').style.display = "none";
                     $scope.refaccion = "";
                 },
                 function(response) {
-                    alert("No se pudo dar de baja la pieza");
+                    // alert("No se pudo dar de baja la pieza");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'No se pudo borrar la pieza ...',
+                        }));
                 }
             );
     }
@@ -835,13 +1121,24 @@ app.controller('consultaRefax', function($scope, $http) {
                 $scope.Refax = response.data.info;
             },
             function(response) {
-                alert("Algo Salio Mal")
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal ...',
+                    }));
             }
         );
     $scope.RefaccionesCat = function() {
         document.getElementById('Refac').style.display = "none";
         if ($scope.cat == undefined) {
-            alert("No has seleccionado una categoria")
+            // alert("No has seleccionado una categoria")
+            $(document).ready(
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Ops',
+                    text: 'No has seleccionado una categoría.',
+                }));
         } else {
             var data = {
                 categoria: $scope.cat
@@ -854,7 +1151,12 @@ app.controller('consultaRefax', function($scope, $http) {
                         $scope.ProdsCategoria = response.data.info;
                     },
                     function(response) {
-                        alert("Todo mal");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Algo salió mal ...',
+                            }));
                     }
                 );
         }
@@ -871,7 +1173,12 @@ app.controller('consultaRefax', function($scope, $http) {
                     $scope.ReFax = response.data.info;
                 },
                 function(response) {
-                    alert("Mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal ...',
+                        }));
                 }
             );
     }
@@ -934,11 +1241,13 @@ app.controller('homecontroller', function($scope, $http) {
                 function(response) {
                     if (response.data.info == "mal") {
                         // alert("Usuario o Contraseña Incorrectos");
-                        Swal.fire(
-                            'Error',
-                            'Usuario o Contraseña Incorrectos!',
-                            'error'
-                        );
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Datos Incorrectos',
+                                text: 'Usuario o contraseña incorrectos',
+                                // footer: '<a href="#!">Ir a Inicio</a>'
+                            }));
                         $scope.CorreoLogin = "";
                         $scope.PassLogin = "";
                     } else {
@@ -966,7 +1275,13 @@ app.controller('homecontroller', function($scope, $http) {
 
                 },
                 function(response) {
-                    alert("Login Incorrecto");
+                    // alert("Login Incorrecto");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Autenticación Incorrecta',
+                        }));
                 }
             );
     }
@@ -987,7 +1302,12 @@ app.controller('ventasController', function($scope, $http) {
                 $scope.Refacciones = response.data.info;
             },
             function(response) {
-                alert("Mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Algo salió mal',
+                    }));
             }
         );
 
@@ -997,7 +1317,12 @@ app.controller('ventasController', function($scope, $http) {
                 $scope.Clientes = response.data.info;
             },
             function(response) {
-                alert("mal");
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Algo salió mal',
+                    }));
             }
         );
 
@@ -1008,7 +1333,12 @@ app.controller('ventasController', function($scope, $http) {
         $http.post('/clientes/registro', cliente)
             .then(
                 function(response) {
-                    alert("Se ah registrado el Cliente");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien',
+                            text: 'Se ha registrado al Cliente.',
+                        }));
                     let venta = new Venta($scope.fecha.getFullYear() + "-" + ($scope.fecha.getMonth() + 1) + "-" + $scope.fecha.getDate(), $scope.total, sessionStorage.getItem(1), $scope.RFC_cliente);
                     $http.post('/RegistroVenta', venta)
                         .then(
@@ -1032,28 +1362,56 @@ app.controller('ventasController', function($scope, $http) {
                                                             if (cont >= $scope.data.length - 1) {
                                                                 $scope.data = [];
                                                                 $scope.total = 0
-                                                                alert("La venta se ha registrado con exito");
+                                                                    // alert("La venta se ha registrado con exito");
+                                                                $(document).ready(
+                                                                    Swal.fire({
+                                                                        icon: 'success',
+                                                                        title: 'Bien',
+                                                                        text: 'La venta se ha registrado con éxito.',
+                                                                    }));
                                                                 location.reload();
                                                             }
                                                         },
                                                         function(response) {
-                                                            alert("Error al actualizar la existencia de la refaccion");
+                                                            $(document).ready(
+                                                                Swal.fire({
+                                                                    icon: 'error',
+                                                                    title: 'Ops',
+                                                                    text: 'Error a actualizar existencia de la refacción.',
+                                                                }));
                                                         }
                                                     )
                                             },
                                             function(response) {
-                                                alert("Error al guardar los detalles de la venta");
+                                                // alert("Error al guardar los detalles de la venta");
+                                                $(document).ready(
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Ops',
+                                                        text: 'Error al guardar detalles venta.',
+                                                    }));
                                             }
                                         );
                                 }
                             },
                             function(response) {
-                                alert('No se pudo registrar la venta');
+                                $(document).ready(
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Ops',
+                                        text: 'No se pudo registrar la venta.',
+                                    }));
                             }
                         );
                 },
                 function(response) {
-                    alert('no se pudo registrar el cliente');
+                    // alert('no se pudo registrar el cliente');
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Ocurrio un error al regitrar el cliente.',
+                        }));
                 }
             );
 
@@ -1083,18 +1441,36 @@ app.controller('ventasController', function($scope, $http) {
                                                 //alert("Actualizacion Completo");
                                             },
                                             function(response) {
-                                                alert("Error al Actualizar los detalles de la venta");
+                                                // alert("Error al Actualizar los detalles de la venta");
+                                                $(document).ready(
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Ops',
+                                                        text: 'Error al Actualizar los detalles de la venta.',
+                                                    }));
                                             }
                                         );
                                 },
                                 function(response) {
                                     alert("Error al guardar los detalles de la venta");
+                                    $(document).ready(
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Ops',
+                                            text: 'Error al guardar los detalles de la venta.',
+                                        }));
                                 }
                             );
                     }
                 },
                 function(response) {
-                    alert('No se pudo registrar la venta');
+                    // alert('No se pudo registrar la venta');
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Ocurrió un error al  registrar la venta.',
+                        }));
                 }
             );
     }
@@ -1144,7 +1520,12 @@ app.controller('ventasController', function($scope, $http) {
                         $scope.Refacciones = response.data.info;
                     },
                     function(response) {
-                        alert("Algo salio Mal");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Algo salió mal.',
+                            }));
                     }
                 );
         } else {
@@ -1154,7 +1535,13 @@ app.controller('ventasController', function($scope, $http) {
                         $scope.Refacciones = response.data.info;
                     },
                     function(response) {
-                        alert("No se pudo traer la refaccion");
+                        // alert("No se pudo traer la refaccion");
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Ocurrió un error al obtener la refacción.',
+                            }));
                     }
                 )
         }
@@ -1169,10 +1556,20 @@ app.controller('ventasController', function($scope, $http) {
         $http.post('/upload', null)
             .then(
                 function(response) {
-                    alert("Bien");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien',
+                            text: 'Todo salió bien.',
+                        }));
                 },
                 function(response) {
-                    alert("mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal.',
+                        }));
                 }
             );
     }
@@ -1184,7 +1581,12 @@ app.controller('ventasController', function($scope, $http) {
                     alert(response.data.info[0].nombre);
                 },
                 function(response) {
-                    alert("mal");
+                    $(document).ready(
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops',
+                            text: 'Algo salió mal.',
+                        }));
                 }
             );
     }
