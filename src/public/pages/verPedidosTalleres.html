@@ -1,212 +1,216 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body ng-controller= "pedidosTallerController">
+
+<body ng-controller="pedidosTallerController">
     <br><br>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="text-align: center;">Pedidos del Taller</h1>
+                <h1 class="text-center text-primary animate__animated animate__fadeInLeft"> <i class="fa fa-truck-loading"></i> Pedidos del Taller</h1>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <br>
-                        <button type="button" class="btn btn-outline-primary" ng-click="getNoSurtidos()">Pedidos que aun no Surto</button>
-                        <button type="button" class="btn btn-outline-danger" ng-click="getSurtidos()">Pedidos Facturados</button>
-                        <br><br>
+                <hr>
+                <div class="row mt-4 mb-3">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-block mr ml-3 btn-outline-warning" ng-click="getNoSurtidos()"> <i class="fa fa-warning mr-2"></i> Pedidos que aun no Surto</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn  btn-block mr ml-3  btn-outline-info" ng-click="getSurtidos()"> <i class="fa fa-usd mr-2"></i> Pedidos Facturados</button>
                     </div>
                 </div>
 
                 <div class="row" id="NoSurtidos">
-                    <div class="col-md-12">
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col"># de Pedido</th>
-                        <th scope="col">Fecha y Hora</th>
-                        <th scope="col">RFC del Taller</th>
-                        <th scope="col">Estatus de Pago</th>
-                        <th scope="col">Estatus de Surtido</th>
-                        <th scope="col">Detalles</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat="PedidoN in PedidosNo">
-                        <th scope="row">{{PedidoN.id_pedido}}</th>
-                        <td>{{PedidoN.fecha}}</td>
-                        <td>{{PedidoN.rfc_cliente}}</td>
-                        <td>{{PedidoN.estatus_pago}}</td>
-                        <td>{{PedidoN.status_surtido}}</td>
-                        <td> <button type="button" class="btn btn-outline-primary" ng-click="VerPedido(PedidoN.id_pedido)">Ver Detalles</button> </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    <div class="col-md-12 text-center">
+                        <table class="table table-responsive animate__animated animate__fadeIn">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"># de Pedido</th>
+                                    <th scope="col">Fecha y Hora</th>
+                                    <th scope="col">RFC del Taller</th>
+                                    <th scope="col">Estatus de Pago</th>
+                                    <th scope="col">Estatus de Surtido</th>
+                                    <th scope="col">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="PedidoN in PedidosNo">
+                                    <th scope="row">{{PedidoN.id_pedido}}</th>
+                                    <td>{{PedidoN.fecha}}</td>
+                                    <td>{{PedidoN.rfc_cliente}}</td>
+                                    <td>{{PedidoN.estatus_pago}}</td>
+                                    <td>{{PedidoN.status_surtido}}</td>
+                                    <td> <button type="button" class="btn btn-outline-primary" ng-click="VerPedido(PedidoN.id_pedido)"> <i class="fa fa-eye mr-2"></i> Ver Detalles</button> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
-                
+
                 <div class="row" id="Surtidos">
                     <div class="col-md-12">
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col"># de Pedido</th>
-                        <th scope="col">Fecha y Hora</th>
-                        <th scope="col">RFC del Cliente</th>
-                        <th scope="col">Estatus de Pago</th>
-                        <th scope="col">Estatus de Surtido</th>
-                        <th scope="col">Detalles</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat="Pedido in Pedidos">
-                        <th scope="row">{{Pedido.id_pedido}}</th>
-                        <td>{{Pedido.fecha}}</td>
-                        <td>{{Pedido.rfc_cliente}}</td>
-                        <td>{{Pedido.estatus_pago}}</td>
-                        <td>{{Pedido.status_surtido}}</td>
-                        <td> <button type="button" ng-click="verFactura(Pedido.id_pedido, Pedido.rfc_cliente)" data-toggle="modal" data-target="#verFactura" class="btn btn-outline-primary">Ver Factura</button> 
-                            <div class="modal fade" id="verFactura">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h2 style="color: red"> Factura</h2>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"># de Pedido</th>
+                                    <th scope="col">Fecha y Hora</th>
+                                    <th scope="col">RFC del Cliente</th>
+                                    <th scope="col">Estatus de Pago</th>
+                                    <th scope="col">Estatus de Surtido</th>
+                                    <th scope="col">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="Pedido in Pedidos">
+                                    <th scope="row">{{Pedido.id_pedido}}</th>
+                                    <td>{{Pedido.fecha}}</td>
+                                    <td>{{Pedido.rfc_cliente}}</td>
+                                    <td>{{Pedido.estatus_pago}}</td>
+                                    <td>{{Pedido.status_surtido}}</td>
+                                    <td> <button type="button" ng-click="verFactura(Pedido.id_pedido, Pedido.rfc_cliente)" data-toggle="modal" data-target="#verFactura" class="btn btn-outline-primary">Ver Factura</button>
+                                        <div class="modal fade" id="verFactura">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h2 style="color: red"> Factura</h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h3 style="background-color: cornflowerblue;">Refaccionaria AutoRefax</h3>
+                                                                <p>No.Factura: {{Factura.idfactura}} </p>
+                                                                <p>Aguascalientes, Aguascalientes</p>
+                                                                <p>Carmen de Luna Sevilla #210, 48768</p>
+                                                                <p>449-214-89-78</p><br>
+                                                                <br>
+                                                                <h3 style="background-color: cornflowerblue;">Facturar A:</h3>
+                                                                <p>{{Cliente.razon_social}}</p>
+                                                                <p>{{Cliente.ciudad}} {{Cliente.estado}}</p>
+                                                                <p>{{Cliente.domicilio}}</p>
+                                                                <p>{{Cliente.telefono}}</p>
+                                                                <br>
+                                                                <h3 style="background-color: cornflowerblue;">Detalles</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <table class="table">
+                                                                    <thead class="thead-dark">
+                                                                        <tr>
+                                                                            <th scope="col">Refaccion</th>
+                                                                            <th scope="col">Cantidad</th>
+                                                                            <th scope="col">Precio Unitario</th>
+                                                                            <th scope="col">Total</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr ng-repeat="detalle in detallePedido">
+                                                                            <td>{{detalle.nombre}}</td>
+                                                                            <td>{{detalle.cantidad}}</td>
+                                                                            <td>{{detalle.precio_venta}}</td>
+                                                                            <td>{{detalle.cantidad * detalle.precio_venta}}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <h4 style="background-color: cornflowerblue;">Total de la Compra: ${{TotalCompra}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
+
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h3 style="background-color: cornflowerblue;">Refaccionaria AutoRefax</h3>
-                                                        <p>No.Factura: {{Factura.idfactura}} </p>
-                                                        <p>Aguascalientes, Aguascalientes</p>
-                                                        <p>Carmen de Luna Sevilla #210, 48768</p>
-                                                        <p>449-214-89-78</p><br>
-                                                        <br>
-                                                        <h3 style="background-color: cornflowerblue;">Facturar A:</h3>
-                                                        <p>{{Cliente.razon_social}}</p>
-                                                        <p>{{Cliente.ciudad}} {{Cliente.estado}}</p>
-                                                        <p>{{Cliente.domicilio}}</p>
-                                                        <p>{{Cliente.telefono}}</p>
-                                                        <br>
-                                                        <h3 style="background-color: cornflowerblue;">Detalles</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                <div class="col-md-12">
-                                                    <table class="table">
-                                                        <thead class="thead-dark">
-                                                          <tr>
-                                                            <th scope="col">Refaccion</th>
-                                                            <th scope="col">Cantidad</th>
-                                                            <th scope="col">Precio Unitario</th>
-                                                            <th scope="col">Total</th>
-                                                          </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                          <tr ng-repeat="detalle in detallePedido">
-                                                            <td>{{detalle.nombre}}</td>
-                                                            <td>{{detalle.cantidad}}</td>
-                                                            <td>{{detalle.precio_venta}}</td>
-                                                            <td>{{detalle.cantidad * detalle.precio_venta}}</td>
-                                                          </tr>
-                                                        </tbody>
-                                                      </table>
-                                                      <h4 style="background-color: cornflowerblue;">Total de la Compra: ${{TotalCompra}}</h4>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                              
-                                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
-                                              
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
-                
+
 
                 <div class="row" id="Detalles">
                     <div class="col-md-12">
                         <table class="table">
                             <thead class="thead-dark">
-                              <tr>
-                                <th scope="col"># de Pedido</th>
-                                <th scope="col">Refaccion Solicitada</th>
-                                <th scope="col">Cantidad de Refacciones Solicitadas</th>
-                                <th scope="col">Surtir Refaccion</th>
-                              </tr>
+                                <tr>
+                                    <th scope="col"># de Pedido</th>
+                                    <th scope="col">Refaccion Solicitada</th>
+                                    <th scope="col">Cantidad de Refacciones Solicitadas</th>
+                                    <th scope="col">Surtir Refaccion</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr ng-repeat= "Ped in DatosPedido" id="{{Ped.id_refaccion}}" >
-                                <th scope="row">{{Ped.id_pedido}}</th>
-                                <td> <button type="button" class="btn btn-outline-primary"  ng-click= verRefaccion(Ped.id_refaccion) data-toggle="modal" data-target="#verRefax">Ver Refaccion</button>
-                                  <div class="modal fade" id="verRefax">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h2 style="color: red">Refaccion</h2>
+                                <tr ng-repeat="Ped in DatosPedido" id="{{Ped.id_refaccion}}">
+                                    <th scope="row">{{Ped.id_pedido}}</th>
+                                    <td> <button type="button" class="btn btn-outline-primary" ng-click=v erRefaccion(Ped.id_refaccion) data-toggle="modal" data-target="#verRefax"> <i class="fa fa-eye"></i> Ver Refaccion</button>
+                                        <div class="modal fade" id="verRefax">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h2 style="color: red">Refaccion</h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            <table class="table">
+                                                                <thead class="thead-dark">
+                                                                    <tr>
+                                                                        <th scope="col">Id</th>
+                                                                        <th scope="col">Imagen</th>
+                                                                        <th scope="col">Refaccion</th>
+                                                                        <th scope="col">Existencia</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">{{Refax.id_refaccion}}</th>
+                                                                        <td><img src="../images/{{Refax.imagen}}" width="50px" height="50px"></td>
+                                                                        <td>{{Refax.nombre}}</td>
+                                                                        <td>{{Refax.existencia}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> <i class="fa fa-cancel"></i> Salir</button>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="col-md-12">
-                                                    <table class="table">
-                                                        <thead class="thead-dark">
-                                                          <tr>
-                                                            <th scope="col">Id</th>
-                                                            <th scope="col">Imagen</th>
-                                                            <th scope="col">Refaccion</th>
-                                                            <th scope="col">Existencia</th>
-                                                          </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                          <tr>
-                                                            <th scope="row">{{Refax.id_refaccion}}</th>
-                                                            <td><img src="../images/{{Refax.imagen}}" width="50px" height="50px"></td>
-                                                            <td>{{Refax.nombre}}</td>
-                                                            <td>{{Refax.existencia}}</td>
-                                                          </tr>
-                                                        </tbody>
-                                                      </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                              
-                                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Salir</button>
-                                              
-                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                </td>
-                                
-                                <td>{{Ped.cantidad}}</td>
-                                <td> <button type="button" ng-click="SurtirRefaccion(Ped.id_refaccion, Ped.cantidad)" class="btn btn-outline-primary">Surtir Refaccion</button> </td>
-                              </tr>
+                                    </td>
+
+                                    <td>{{Ped.cantidad}}</td>
+                                    <td> <button type="button" ng-click="SurtirRefaccion(Ped.id_refaccion, Ped.cantidad)" class="btn btn-primary"> <i class="fa fa-truck-loading"></i> Surtir Refaccion</button> </td>
+                                </tr>
                             </tbody>
-                          </table>
+                        </table>
                     </div>
-                    <button type="button" class="btn btn-outline-danger" ng-click="Facturar(Pedido.id_pedido)">Terminar Surtido y Facturar</button>   <button type="button" class="btn btn-outline-danger" ng-click="cancelar">Cancelar</button>
+                    <button type="button" class="btn btn-success mr-4" ng-click="Facturar(Pedido.id_pedido)"> <i class="fa fa-check mr-2"></i> Terminar Surtido y Facturar</button> <button type="button" class="btn btn-danger" ng-click="cancelar"> <i class="fa fa-cancel-square"></i> Cancelar</button>
                 </div>
-                
+
 
 
             </div>
         </div>
     </div>
 </body>
+
 </html>
