@@ -1,5 +1,6 @@
 //import Cliente from "./Clases/Cliente";
 
+
 var app = angular.module('app', ['ngRoute']);
 
 app.config(function($routeProvider) {
@@ -85,6 +86,118 @@ app.config(function($routeProvider) {
 });
 //import Cliente from "./Clases/Cliente";
 app.controller('estadisticasController', function($scope, $http){
+  
+    var ventasEnero=0;
+    var ventasFebrero=0;
+    var ventasMarzo=0;
+    var ventasAbril=0;
+    var ventasMayo=0;
+    var ventasJunio=0;
+    var ventasJulio=0;
+    $http.get('/VentasEnero')
+    .then(
+        function(response){
+            ventasEnero=response.data.info;
+            $http.get('/VentasFebrero')
+            .then(
+                function(response){
+                    ventasFebrero=response.data.info;
+                    $http.get('/VentasMarzo')
+                    .then(
+                        function(response){
+                        ventasMarzo=response.data.info;
+                        $http.get('/VentasAbril')
+                        .then(
+                            function(response){
+                                ventasAbril=response.data.info;
+                                $http.get('/VentasMayo')
+                                .then(
+                                    function(response){
+                                        ventasMayo=response.data.info;
+                                        $http.get('/VentasJunio')
+                                        .then(
+                                            function(response){
+                                                ventasJunio=response.data.info;
+                                                $http.get('/VentasJulio')
+                                                .then(
+                                                    function(response){
+                                                        alert("llegue")
+                                                        ventasJulio=response.data.info;
+                                                        var ctx = document.getElementById('canvas').getContext('2d');
+                                                        var myChart = new Chart(ctx, {
+                                                            type: 'bar',
+                                                            data: {
+                                                                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+                                                                datasets: [{
+                                                                    label: '$ Ventas Totales',
+                                                                    data: [ventasEnero, ventasFebrero, ventasMarzo, ventasAbril, ventasMayo, ventasJunio, ventasJulio],
+                                                                    backgroundColor: [
+                                                                    'rgba(255, 99, 132, 0.2)',
+                                                                    'rgba(54, 162, 235, 0.2)',
+                                                                    'rgba(255, 206, 86, 0.2)',
+                                                                    'rgba(75, 192, 192, 0.2)',
+                                                                    'rgba(153, 102, 255, 0.2)',
+                                                                    'rgba(255, 159, 64, 0.2)',
+                                                                    'rgba(255, 206, 86, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                    'rgba(255, 99, 132, 1)',
+                                                                    'rgba(54, 162, 235, 1)',
+                                                                    'rgba(255, 206, 86, 1)',
+                                                                    'rgba(75, 192, 192, 1)',
+                                                                    'rgba(153, 102, 255, 1)',
+                                                                    'rgba(255, 159, 64, 1)',
+                                                                    'rgba(255, 206, 86, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            }
+                                                        }
+                                                    });
+                                                    },
+                                                    function(response){
+
+                                                    }
+                                                )
+                                        },
+                                        function(response){
+
+                                        }
+                                    )
+                                    },
+                                    function(response){
+
+                                    }
+                                )
+                            },
+                            function(response){
+
+                            }
+                        )
+                    },
+                    function(response){
+
+                    }
+                )
+                },
+                function(response){
+
+                }
+            )
+            
+        },
+        function(response){
+
+        }
+    )
     
 })
 app.controller('detallesController', function($scope, $http) {
