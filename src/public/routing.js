@@ -1506,13 +1506,13 @@ app.controller('ventasController', function($scope, $http) {
                                                             if (cont >= $scope.data.length - 1) {
                                                                 $scope.data = [];
                                                                 $scope.total = 0
-                                                                    // alert("La venta se ha registrado con exito");
                                                                 $(document).ready(
                                                                     Swal.fire({
                                                                         icon: 'success',
                                                                         title: 'Bien',
                                                                         text: 'La venta se ha registrado con éxito.',
                                                                     }));
+                                                                
                                                                 location.reload();
                                                             }
                                                         },
@@ -1582,7 +1582,9 @@ app.controller('ventasController', function($scope, $http) {
                                     $http.post('/ActualizarExistencia', data)
                                         .then(
                                             function(response) {
-                                                //alert("Actualizacion Completo");
+                                                    
+                                                   
+                                            
                                             },
                                             function(response) {
                                                 // alert("Error al Actualizar los detalles de la venta");
