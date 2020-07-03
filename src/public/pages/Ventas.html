@@ -20,7 +20,8 @@
                                 <h5>Fecha: </h5>
                             </div>
                             <div class="col-sm-9 text-center">
-                                <h5 style="color: rgb(194, 23, 23);">{{meses[fecha.getMonth()]}} {{fecha.getDate()}} de {{fecha.getFullYear()}}
+                                <h5 style="color: rgb(194, 23, 23);">{{meses[fecha.getMonth()]}} {{fecha.getDate()}} de
+                                    {{fecha.getFullYear()}}
                                 </h5>
                             </div>
                         </div>
@@ -41,19 +42,23 @@
                             <tbody>
                                 <tr ng-repeat="Productos in data">
                                     <td style="font-size: 13px;" scope="col"> {{Productos.nombre}}</td>
-                                    <td style="font-size: 15px;" scope="col"><button type="button" ng-click="AumentaCant(Productos.id)" class=" btn btn-link"><i class="fas fa-plus-circle"></i></button>
-                                        <td style="font-size: 15px;" scope="col">{{Productos.cantidad}}</td>
-                                        <td style="font-size: 15px;" scope="col"><button type="button" ng-click="DisminuyeCant(Productos.id)" class=" btn btn-link "><i class="fas fa-minus-circle"></i></button></td>
+                                    <td style="font-size: 15px;" scope="col"><button type="button"
+                                            ng-click="AumentaCant(Productos.id)" class=" btn btn-link"><i
+                                                class="fas fa-plus-circle"></i></button>
+                                    <td style="font-size: 15px;" scope="col">{{Productos.cantidad}}</td>
+                                    <td style="font-size: 15px;" scope="col"><button type="button"
+                                            ng-click="DisminuyeCant(Productos.id)" class=" btn btn-link "><i
+                                                class="fas fa-minus-circle"></i></button></td>
                                     </td>
-                                    <td style="font-size: 15px;" scope="col">${{Productos.precio}}</td>
-                                    <td style="font-size: 15px;" scope="col">${{Productos.total}}</td>
+                                    <td style="font-size: 15px;" scope="col">${{Productos.precio |currency:"$":2}}</td>
+                                    <td style="font-size: 15px;" scope="col">${{Productos.total |currency:"$":2}}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                 </div>
-                <div class="row animate__animated animate__fadeInDown">
+                <div class="row">
                     <div class="col-md-3">
                         <h5 class="text-primary"> Total a Pagar:</h5>
                     </div>
@@ -61,7 +66,8 @@
                         <h4> ${{total}}</h4>
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ventana"> <i class="fa fa-money-bill-wave mr-2"></i> Finalizar Venta</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ventana"> <i
+                                class="fa fa-money-bill-wave mr-2"></i> Finalizar Venta</button>
 
                         <div class="modal fade" id="ventana">
                             <div class="modal-dialog">
@@ -81,30 +87,38 @@
                                             <div class="col-md-12">
                                                 <form>
                                                     <div class="form-group row">
-                                                        <label for="RFC" class="col-sm-4 col-form-label">RFC del Cliente</label>
+                                                        <label for="RFC" class="col-sm-4 col-form-label">RFC del
+                                                            Cliente</label>
                                                         <div class="col-sm-8">
-                                                            <select name="rfc" id="RFC" ng-model="RFC_cliente" class="form-control">
-                                <option value=""></option>
-                                <option ng-repeat="Cliente in Clientes" ng-model="RFC_cliente"
-                                  value="{{Cliente.rfc_cliente}}">{{Cliente.rfc_cliente}}</option>
-                              </select>
+                                                            <select name="rfc" id="RFC" ng-model="RFC_cliente"
+                                                                class="form-control">
+                                                                <option value=""></option>
+                                                                <option ng-repeat="Cliente in Clientes"
+                                                                    ng-model="RFC_cliente"
+                                                                    value="{{Cliente.rfc_cliente}}">
+                                                                    {{Cliente.rfc_cliente}}</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                             <br>
                                             <div class="col-md-12">
-                                                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#registroCliente"> <i class="fa fa-plus mr-2"></i> Registrar nuevo Cliente</button>
+                                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                                    data-target="#registroCliente"> <i class="fa fa-plus mr-2"></i>
+                                                    Registrar nuevo Cliente</button>
                                                 <div class="modal fade" id="registroCliente">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <div class="row">
                                                                     <div class="col-md-2">
-                                                                        <img src="images/empresario.png" width="50px" height="50px">
+                                                                        <img src="images/empresario.png" width="50px"
+                                                                            height="50px">
                                                                     </div>
                                                                     <div class="col-md-10 mt-2">
-                                                                        <h4 style="color: green">Registro de Nuevos Clientes</h4>
+                                                                        <h4 style="color: green">Registro de Nuevos
+                                                                            Clientes</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -112,43 +126,79 @@
                                                                 <div class="col-md-12">
                                                                     <form>
                                                                         <div class="form-group">
-                                                                            <label for="RFCR"> <i class="mr-2 fa fa-fingerprint"></i> RFC del cliente</label>
-                                                                            <input type="text" ng-model="RFC_cliente" class="form-control" id="RfCR" placeholder="RFC">
+                                                                            <label for="RFCR"> <i
+                                                                                    class="mr-2 fa fa-fingerprint"></i>
+                                                                                RFC del cliente</label>
+                                                                            <input type="text" ng-model="RFC_cliente"
+                                                                                class="form-control" id="RfCR"
+                                                                                placeholder="RFC">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="nombre"> <i class="mr-2 fa fa-id-card"></i> Razon Social o Nombre de la persona</label>
-                                                                            <input type="text" ng-model="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                                                                            <label for="nombre"> <i
+                                                                                    class="mr-2 fa fa-id-card"></i>
+                                                                                Razon Social o Nombre de la
+                                                                                persona</label>
+                                                                            <input type="text" ng-model="nombre"
+                                                                                class="form-control" id="nombre"
+                                                                                placeholder="Nombre">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="ciudad"> <i class="mr-2 fa fa-city"></i> Ciudad</label>
-                                                                            <input type="text" ng-model="ciudad" class="form-control" id="ciudad" placeholder="Ciudad">
+                                                                            <label for="ciudad"> <i
+                                                                                    class="mr-2 fa fa-city"></i>
+                                                                                Ciudad</label>
+                                                                            <input type="text" ng-model="ciudad"
+                                                                                class="form-control" id="ciudad"
+                                                                                placeholder="Ciudad">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="estado"> <i class="mr-2 fa fa-map"></i> Estado</label>
-                                                                            <input type="text" ng-model="estado" class="form-control" id="estado" placeholder="Estado">
+                                                                            <label for="estado"> <i
+                                                                                    class="mr-2 fa fa-map"></i>
+                                                                                Estado</label>
+                                                                            <input type="text" ng-model="estado"
+                                                                                class="form-control" id="estado"
+                                                                                placeholder="Estado">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="domicilio"> <i class="mr-2 fa fa-home"></i> Domicilio</label>
-                                                                            <input type="text" ng-model="domicilio" class="form-control" id="domicilio" placeholder="Domicilio">
+                                                                            <label for="domicilio"> <i
+                                                                                    class="mr-2 fa fa-home"></i>
+                                                                                Domicilio</label>
+                                                                            <input type="text" ng-model="domicilio"
+                                                                                class="form-control" id="domicilio"
+                                                                                placeholder="Domicilio">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="Telefono"> <i class="mr-2 fa fa-phone"></i> Telefono</label>
-                                                                            <input type="text" ng-model="telefono" class="form-control" id="telefono" placeholder="Telefono">
+                                                                            <label for="Telefono"> <i
+                                                                                    class="mr-2 fa fa-phone"></i>
+                                                                                Telefono</label>
+                                                                            <input type="text" ng-model="telefono"
+                                                                                class="form-control" id="telefono"
+                                                                                placeholder="Telefono">
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="email"> <i class="mr-2 fa fa-envelope"></i> Email</label>
-                                                                            <input type="text" ng-model="email" class="form-control" id="email" placeholder="Email">
+                                                                            <label for="email"> <i
+                                                                                    class="mr-2 fa fa-envelope"></i>
+                                                                                Email</label>
+                                                                            <input type="text" ng-model="email"
+                                                                                class="form-control" id="email"
+                                                                                placeholder="Email">
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="col-md-6" style="text-align: center;">
-                                                                    <button type="button" class="btn btn-outline-success" data-dismiss="modal" ng-click="finalizarVentaCliente()"><i class="fa fa-check mr-2"></i>Registrar y Facturar</button>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-success"
+                                                                        data-dismiss="modal"
+                                                                        ng-click="finalizarVentaCliente()"><i
+                                                                            class="fa fa-check mr-2"></i>Registrar y
+                                                                        Facturar</button>
                                                                 </div>
                                                                 <div class="col-md-6" style="text-align: center;">
-                                                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Cancelar
-                                  </button>
+                                                                    <button type="button" class="btn btn-outline-danger"
+                                                                        data-dismiss="modal"> <i
+                                                                            class="fa fa-window-close"></i> Cancelar
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -160,10 +210,13 @@
                                     <div class="modal-footer">
 
                                         <div class="col-md-6" style="text-align: center;">
-                                            <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="GuardarVenta()"> <i class="fa fa-check mr-2"></i> Finalizar Venta</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal"
+                                                ng-click="GuardarVenta()"> <i class="fa fa-check mr-2"></i> Finalizar
+                                                Venta</button>
                                         </div>
                                         <div class="col-md-6" style="text-align: center;">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fa fa-window-close"></i> Cancelar Venta</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i
+                                                    class="fa fa-window-close"></i> Cancelar Venta</button>
                                         </div>
 
                                     </div>
@@ -181,6 +234,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-bars"></i></span>
                                 <select class="form-control" ng-model="categoria" name="categoria">
+<<<<<<< HEAD
                   <option value="Todas">Todas</option>
                   <option value="Afinacion">Afinacion</option>
                   <option value="Frenos">Frenos</option>
@@ -189,20 +243,32 @@
                   <option value="Enfriamento">Enfriamento</option>
                   <option value="Motor">Ajuste de Motor</option>
                 </select>
+=======
+                                    <option value="">Categoria</option>
+                                    <option value="Afinacion">Afinacion</option>
+                                    <option value="Frenos">Frenos</option>
+                                    <option value="Suspension">Suspención</option>
+                                    <option value="Clutch">Clutch de Embrague</option>
+                                    <option value="Enfriamento">Enfriamento</option>
+                                    <option value="Motor">Ajuste de Motor</option>
+                                </select>
+>>>>>>> 323fbcd3fdd48329d13d044a32471e89d3faba4f
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-wrench"></i></span>
                                 <select name="refaccion" id="refaccion" ng-model="refaccion" class="form-control">
-                  <option value="">Nombre de la refaccion</option>
-                  <option value="{{Ref.id_refaccion}}" ng-repeat="Ref in Refacciones">{{Ref.nombre}}</option>
-                </select>
+                                    <option value="">Nombre de la refaccion</option>
+                                    <option value="{{Ref.id_refaccion}}" ng-repeat="Ref in Refacciones">{{Ref.nombre}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-3">
-                            <button type="button" class="btn btn-primary" ng-click="Search()"><i class="fas fa-search-plus"></i>
-                Buscar</button>
+                            <button type="button" class="btn btn-primary" ng-click="Search()"><i
+                                    class="fas fa-search-plus"></i>
+                                Buscar</button>
                         </div>
                     </div>
                 </form>
@@ -211,17 +277,28 @@
                         <div class="card mt-3 mb-3 border-info ">
                             <div class="card-body">
 
-                                <img src="../images/{{Refaccion.imagen}}" class="card-img-top" width="180px" height="130px">
+                                <img src="../images/{{Refaccion.imagen}}" class="card-img-top" width="180px"
+                                    height="130px">
                                 <small class="text-center text-muted">Nombre: </small>
                                 <h5 class="card-title">{{Refaccion.nombre}}</h5>
                                 <hr>
                                 <small class="text-center text-muted">Precio: </small>
-                                <h5 class="card-text">${{Refaccion.precio_venta}}</h5>
+                                <h5 class="card-text">{{Refaccion.precio_venta | currency:"MXN$":2 }}</h5>
                                 <hr>
+<<<<<<< HEAD
                                 <h5 class="card-text">({{Refaccion.existencia}})</h5>
                                 <hr>
                                 <button type="button" class="btn btn-outline-info mt-2 mb-2 btn-block" ng-click="verDetalles(Refaccion.id_refaccion)"><i class="fas fa-eye mr-2"></i>Ver</button>
                                 <button type="button" ng-click="AgregarLista(Refaccion.id_refaccion)" class="btn btn-primary btn-block"><i class="fas fa-cart-plus mr-2"></i>Agregar</button>
+=======
+                                <button type="button" class="btn btn-outline-info mt-2 mb-2 btn-block"
+                                    ng-click="verDetalles(Refaccion.id_refaccion)"><i
+                                        class="fas fa-eye mr-2"  data-toggle="modal"
+                                        data-target="#myModal"></i>Ver</button>
+                                <button type="button" ng-click="AgregarLista(Refaccion.id_refaccion)"
+                                    class="btn btn-primary btn-block"><i
+                                        class="fas fa-cart-plus mr-2"></i>Agregar</button>
+>>>>>>> 323fbcd3fdd48329d13d044a32471e89d3faba4f
                             </div>
                         </div>
                     </div>

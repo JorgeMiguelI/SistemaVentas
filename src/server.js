@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const util = require('util');
 const fs = require('fs');
-const multer = require('multer')
+const multer = require('multer');
+const morgan = require("morgan");
 
 
 //Configuraciones
@@ -29,6 +30,7 @@ app.use(multer({
 }).single('image'));
 
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(morgan("dev")); //Este middleware sirve para ver el estatus de los req
 //-----------------------------------------------------------
 
 
@@ -40,6 +42,9 @@ const pool = mysql.createPool({
     user: 'root',
     password: 'Hola123',
     port: 3304,
+    //password: 'AnEtCMkqf3cqn1Ro', //
+    //port: 3308, //
+
     database: 'bdrefaccionaria'
 });
 

@@ -1,6 +1,7 @@
 //import Cliente from "./Clases/Cliente";
 
 var app = angular.module('app', ['ngRoute']);
+
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
@@ -15,6 +16,10 @@ app.config(function($routeProvider) {
         .when('/Ventas', {
             templateUrl: 'pages/Ventas.html',
             controller: 'ventasController'
+        })
+        .when('/verVentas', {
+            templateUrl: 'pages/verVentas.html',
+            controller: 'verVentasController'
         })
         .when('/AltaProducto', {
             templateUrl: 'pages/altaProducto.html',
@@ -1645,10 +1650,10 @@ app.controller('ventasController', function($scope, $http) {
                 $scope.total = 0;
                 for (var j = 0; j < $scope.data.length; j++) {
                     $scope.total += $scope.data[j].total;
+
                 }
                 //$scope.total+= $scope.data[i].precio;
                 $scope.total = parseFloat(dosDecimales($scope.total));
-
                 break;
             }
         }
@@ -1674,6 +1679,18 @@ app.controller('ventasController', function($scope, $http) {
     }
 
 });
+
+app.controller('verVentasController', function($scope, $http) {
+    $http.get('/Ventas', null)
+    .then(
+        function(response) {
+            $scope.Ventas = response.data.info;
+        }
+        
+    );
+});
+
+
 
 function dosDecimales(n) {
     let t = n.toString();
