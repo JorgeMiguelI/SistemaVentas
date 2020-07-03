@@ -52,7 +52,8 @@ route.post('/RefaccionesVenta/idRefaccion', (req, res) => {
 
 route.post('/RegistroRefaccion', (req, res) => {
     const status = "S";
-    pool.query('insert into refaccion(nombre, Descripcion, Precio_compra, precio_venta, existencia, imagen, categoria) values(?, ?, ?, ?, ?, ?, ?, ?)', [req.body.nombre, req.body.descripcion, req.body.precioCompra, req.body.precioVenta, req.body.existencia, req.file.originalname, req.body.categoria, status], (err, confirm) => {
+    //console.log(req.file.originalname)
+    pool.query('insert into refaccion(nombre, Descripcion, Precio_compra, precio_venta, existencia, imagen, categoria, status) values(?, ?, ?, ?, ?, ?, ?, ?)', [req.body.nombre, req.body.descripcion, req.body.precioCompra, req.body.precioVenta, req.body.existencia, req.file.originalname, req.body.categoria, status], (err, confirm) => {
         if (err) {
             res.status(400).send({ msg: "Error al guardar los datos" });
             console.log(err);
@@ -139,10 +140,11 @@ route.post('/ActualizarExistencia', async(req, res) => {
 
 route.post('/refacciones/categoria', async(req, res) => {
     let categoria = req.body.categoria;
+    let status="S";
     //console.log(categoria);
     //console.log(categoria);
 
-    pool.query('SELECT *FROM refaccion WHERE categoria = ?', [categoria], (err, datos) => {
+    pool.query('SELECT *FROM refaccion WHERE categoria = ? AND status= ?', [categoria, status], (err, datos) => {
         if (err) {
             res.status(400).send({ msg: "Error" });
         } else {

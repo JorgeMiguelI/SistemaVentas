@@ -121,7 +121,7 @@ app.controller('estadisticasController', function($scope, $http){
                                                 $http.get('/VentasJulio')
                                                 .then(
                                                     function(response){
-                                                        alert("llegue")
+                                                        //alert("llegue")
                                                         ventasJulio=response.data.info;
                                                         var ctx = document.getElementById('canvas').getContext('2d');
                                                         var myChart = new Chart(ctx, {
@@ -1220,6 +1220,7 @@ app.controller('bajasProds', function($scope, $http) {
                         }));
                     document.getElementById('refa').style.display = "none";
                     $scope.refaccion = "";
+                    ///location.reload();
                 },
                 function(response) {
                     // alert("No se pudo dar de baja la pieza");
