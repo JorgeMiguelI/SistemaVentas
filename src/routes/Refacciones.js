@@ -138,9 +138,10 @@ route.post('/ActualizarExistencia', async(req, res) => {
 });
 
 route.post('/refacciones/categoria', async(req, res) => {
-    var categoria = req.body.categoria;
-    console.log(categoria);
-    console.log(categoria);
+    let categoria = req.body.categoria;
+    //console.log(categoria);
+    //console.log(categoria);
+
     pool.query('SELECT *FROM refaccion WHERE categoria = ?', [categoria], (err, datos) => {
         if (err) {
             res.status(400).send({ msg: "Error" });

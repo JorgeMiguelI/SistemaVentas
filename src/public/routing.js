@@ -60,6 +60,10 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/verPedidosTalleres.html',
             controller: 'pedidosTallerController'
         })
+        .when('/estadisticas', {
+            templateUrl: 'pages/estadisticas.html',
+            controller: 'estadisticasController'
+        })
         .when('/surtirPedido', {
             templateUrl: 'pages/surtirPedidoTaller.html',
             controller: 'surtirController'
@@ -75,6 +79,9 @@ app.config(function($routeProvider) {
         });
 });
 //import Cliente from "./Clases/Cliente";
+app.controller('estadisticasController', function($scope, $http){
+    
+})
 app.controller('detallesController', function($scope, $http) {
     var data = {
         idRefaccion: sessionStorage.getItem(10)
@@ -1140,25 +1147,45 @@ app.controller('consultaRefax', function($scope, $http) {
                     text: 'No has seleccionado una categoría.',
                 }));
         } else {
-            var data = {
-                categoria: $scope.cat
-            };
-            $http.post('/refacciones/categoria', data)
-                .then(
-                    function(response) {
-                        document.getElementById('Refacciones').style.display = "flex";
-                        //alert('Todo bien');
-                        $scope.ProdsCategoria = response.data.info;
-                    },
-                    function(response) {
-                        $(document).ready(
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Ops',
-                                text: 'Algo salió mal ...',
-                            }));
-                    }
-                );
+            if($scope.cat =="Todas"){
+                $http.post('/Refacciones', data)
+                    .then(
+                        function(response) {
+                            document.getElementById('Refacciones').style.display = "flex";
+                            //alert('Todo bien');
+                            $scope.ProdsCategoria = response.data.info;
+                        },
+                        function(response) {
+                            $(document).ready(
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ops',
+                                    text: 'Algo salió mal ...',
+                                }));
+                        }
+                    );
+            }else{
+                var data = {
+                    categoria: $scope.cat
+                };
+                $http.post('/refacciones/categoria', data)
+                    .then(
+                        function(response) {
+                            document.getElementById('Refacciones').style.display = "flex";
+                            //alert('Todo bien');
+                            $scope.ProdsCategoria = response.data.info;
+                        },
+                        function(response) {
+                            $(document).ready(
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ops',
+                                    text: 'Algo salió mal ...',
+                                }));
+                        }
+                    );
+            }
+            
         }
     }
     $scope.getRefaccion = function() {
@@ -1514,7 +1541,8 @@ app.controller('ventasController', function($scope, $http) {
             idRefaccion: $scope.refaccion
         }
         if ($scope.refaccion == undefined || $scope.refaccion == "") {
-            $http.post('/Refacciones/categoria', data)
+            if($scope.categoria == "Todas"){
+                $http.post('/Refacciones', data)
                 .then(
                     function(response) {
                         $scope.Refacciones = response.data.info;
@@ -1528,6 +1556,23 @@ app.controller('ventasController', function($scope, $http) {
                             }));
                     }
                 );
+            }else{
+                $http.post('/Refacciones/categoria', data)
+                .then(
+                    function(response) {
+                        $scope.Refacciones = response.data.info;
+                    },
+                    function(response) {
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Algo salió mal.',
+                            }));
+                    }
+                );
+            }
+            
         } else {
             $http.post('/RefaccionesVenta/idRefaccion', data2)
                 .then(
