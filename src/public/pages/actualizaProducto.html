@@ -37,37 +37,37 @@
                 <br>
 
 
-                <form action="/ActualizaRefaccion" class="animate__animated animate__fadeIn" method="POST" enctype="multipart/form-data">
+                <form class="animate__animated animate__fadeIn">
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="exampleInputEmail1"> <i class="fa fa-tools mr-2"></i>Nombre:</label>
-                            <input type="text" value="{{ReFax.nombre}}" class="form-control" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
+                            <input type="text" value="{{ReFax.nombre}}" class="form-control" ng-model="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el Nombre">
                         </div>
 
                         <div class="form-group col-md-7">
                             <label for="exampleInputPassword1"> <i class="fa fa-bars mr-2"></i>Descripcion:</label>
-                            <input type="text" value="{{ReFax.Descripcion}}" class="form-control" name="descripcion" placeholder="Descripcion">
+                            <input type="text" value="{{ReFax.Descripcion}}" class="form-control" ng-model="descripcion" name="descripcion" placeholder="Descripcion">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="fa fa-dollar-sign mr-2"></i>Precio de Compra:</label>
-                            <input type="text" value="{{ReFax.Precio_compra}}" class="form-control" name="precioCompra" placeholder="Precio de Venta">
+                            <input type="text" value="{{ReFax.Precio_compra}}" class="form-control" ng-model="precioc" name="precioCompra" placeholder="Precio de Compra">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="fa fa-dollar-sign mr-2"></i>Precio de Venta:</label>
-                            <input type="text" value="{{ReFax.precio_venta}}" class="form-control" name="precioVenta" placeholder="Precio de Compra">
+                            <input type="text" value="{{ReFax.precio_venta}}" class="form-control" ng-model="preciov" name="precioVenta" placeholder="Precio de Venta">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="fa fa-box mr-2"></i>Existencia:</label>
-                            <input type="text" value="{{ReFax.existencia}}" class="form-control" name="existencia" placeholder="Existencia">
+                            <input type="text" value="{{ReFax.existencia}}" class="form-control" ng-model="existencia" name="existencia" placeholder="Existencia">
                         </div>
                     </div>
                     <div class="form-row">
 
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="fa fa-list mr-2"></i>Categoria</label>
-                            <select class="form-control" name="categoria"> 
+                            <select class="form-control" name="categoria" ng-model="categoria"> 
                           <option value="{{ReFax.categoria}}">{{ReFax.categoria}}</option>
                           <option value="Afinacion">Afinacion</option>
                           <option value="Frenos">Frenos</option>
@@ -81,12 +81,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="fa fa-question mr-2"></i>Status</label>
-                            <input type="text" class="form-control" value="{{ReFax.status}}" name="status">
+                            <input type="text" class="form-control" value="{{ReFax.status}}" ng-model="status" name="status">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-12 text-right col-sm-12">
-                            <button type="submit" class="btn btn-primary btn-lg "><i class="fa fa-floppy-o mr-2"></i>Actualizar Info</button>
+                            <button type="button" class="btn btn-primary btn-lg " ng-click="ActualizaRefaccion()"><i class="fa fa-floppy-o mr-2"></i>Actualizar Info</button>
                         </div>
                     </div>
                 </form>

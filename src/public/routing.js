@@ -1035,6 +1035,13 @@ app.controller('updateEmpleadoController', function($scope, $http) {
             .then(
                 function(response) {
                     $scope.Emp = response.data.info;
+                    $scope.nombre=$scope.Emp.nombre;
+                    $scope.estado=$scope.Emp.estado;
+                    $scope.ciudad=$scope.Emp.ciudad;
+                    $scope.domicilio=$scope.Emp.domicilio;
+                    $scope.cp=$scope.Emp.cp;
+                    $scope.telefono=$scope.Emp.telefono;
+                    $scope.email=$scope.Emp.email
                     //document.getElementById('DatosEmpleado').style.display= "flex";
                 },
                 function(response) {
@@ -1046,6 +1053,34 @@ app.controller('updateEmpleadoController', function($scope, $http) {
                         }));
                 }
             )
+    }
+
+    $scope.ModificaEmpleado= function(){
+        var data={
+            nombre: $scope.nombre,
+            estado: $scope.estado,
+            ciudad: $scope.ciudad,
+            domicilio: $scope.domicilio,
+            cp: $scope.cp,
+            telefono: $scope.telefono,
+            email: $scope.email
+        }
+        $http.post('/ActualizaEmpleado', data)
+        .then(
+            function(response){
+                //location.reload();
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Bien',
+                        text: 'Se ha actualizado la informacion del empleado correctamente',
+                    }));
+                
+            },
+            function(response){
+
+            }
+        )
     }
 });
 app.controller('registroEmpleadosController', function($scope, $http) {
@@ -1073,7 +1108,7 @@ app.controller('registroEmpleadosController', function($scope, $http) {
                             title: 'Bien',
                             text: 'Se registró al empleado correctamente',
                         }));
-                    location.reload();
+                    //location.reload();
                 },
                 function(response) {
                     // alert("Error al registrar el empleado");
@@ -1154,6 +1189,13 @@ app.controller('actualizaController', function($scope, $http) {
             .then(
                 function(response) {
                     $scope.ReFax = response.data.info;
+                    $scope.nombre= $scope.ReFax.nombre;
+                    $scope.descripcion=$scope.ReFax.Descripcion;
+                    $scope.precioc=$scope.ReFax.Precio_compra;
+                    $scope.preciov=$scope.ReFax.precio_venta;
+                    $scope.existencia=$scope.ReFax.existencia;
+                    $scope.categoria=$scope.ReFax.categoria;
+                    $scope.status=$scope.ReFax.status;
                     //alert($scope.Refax.status);
                 },
                 function(response) {
@@ -1165,6 +1207,36 @@ app.controller('actualizaController', function($scope, $http) {
                         }));
                 }
             );
+    }
+    $scope.ActualizaRefaccion=function(){
+        var data={
+            nombre: $scope.nombre,
+            descripcion:$scope.descripcion,
+            precioCompra: $scope.precioc,
+            precioVenta: $scope.preciov,
+            existencia: $scope.existencia,
+            categoria: $scope.categoria,
+            status: $scope.status
+        };
+        $http.post('/ActualizaRefaccion', data)
+        .then(
+            function(response){
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Actualizado',
+                        text: 'Se ha Actualizado correctamente la refaccion',
+                    }));
+            },
+            function(response){
+                $(document).ready(
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ops',
+                        text: 'Algo salió mal ...',
+                    }));
+            }
+        )
     }
 });
 app.controller('bajasProds', function($scope, $http) {
@@ -1802,6 +1874,21 @@ app.controller('verVentasController', function($scope, $http) {
         }
         
     );
+
+    $scope.VerVenta = function(id_venta) {
+        $scope.idventarec = id_venta;
+        var data = {
+            idventa : id_venta
+        };
+        $http.post('/DetalleVentas', data)
+            .then(
+                function(response) {
+                   //Regresa los detalles del pedido
+                    $scope.datosVenta = response.data.info;
+                    
+                });
+           }
+
 });
 
 

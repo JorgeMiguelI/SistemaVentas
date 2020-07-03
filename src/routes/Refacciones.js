@@ -15,25 +15,13 @@ route.get('/piezas', async(req, res) => {
 });
 
 route.post('/ActualizaRefaccion', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     pool.query('UPDATE refaccion SET nombre = ?, Descripcion= ?, Precio_compra =?, precio_venta = ?, existencia= ?, categoria= ?, status= ? WHERE nombre= ?', [req.body.nombre, req.body.descripcion, req.body.precioCompra, req.body.precioVenta, req.body.existencia, req.body.categoria, req.body.status, req.body.nombre], (err, confirm) => {
         if (err) {
             res.status(400).send({ msg: "Error al Actualizar los datos" });
             console.log(err);
         } else {
-            //res.sendFile(path.resolve('src/public/actualizaProducto.html'));
-            // res.sendFile(path.resolve('src/public/pages/actualizaProducto.html'));
-
             res.send("Se ah Actualizado la Refaccion Correctamente");
-            // $(document).ready(
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Actualizada',
-            //         text: 'Se actualizó la refaccion correctamente',
-            //         footer: '<a href="#!/actualizaProds">Ir a página anterior</a>'
-            //     })
-            // );
-            //location.reload()
         }
     })
 });

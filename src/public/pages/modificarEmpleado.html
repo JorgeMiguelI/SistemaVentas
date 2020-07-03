@@ -34,46 +34,46 @@
                     </div>
                 </form>
                 <br>
-                <form action="/ActualizaEmpleado" method="POST" enctype="multipart/form-data" class="animate__animated animate__fadeIn">
+                <form action="/ActualizaEmpleado" class="animate__animated animate__fadeIn">
                     <div class="form-row ">
                         <div class="form-group col-md-4">
                             <label for="exampleInputEmail1"><span class=""><i class=" mr-2 fa fa-user"></i></span> Nombre:</label>
-                            <input type="text" class="form-control" value="{{Emp.nombre}}" name="nombre" placeholder="Nombre">
+                            <input type="text" class="form-control" value="{{Emp.nombre}}" name="nombre" ng-model="nombre" placeholder="Nombre">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class=" mr-2 fa fa-map"></i> Estado:</label>
-                            <input type="text" class="form-control" value="{{Emp.estado}}" name="estado" placeholder="Estado">
+                            <input type="text"  class="form-control" value="{{Emp.estado}}" name="estado" ng-model="estado" placeholder="Estado">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class=" mr-2 fa fa-city"></i> Ciudad:</label>
-                            <input type="text" class="form-control" value="{{Emp.ciudad}}" name="ciudad" placeholder="Ciudad">
+                            <input type="text"  class="form-control" value="{{Emp.ciudad}}" name="ciudad" ng-model="ciudad" placeholder="Ciudad">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class=" mr-2 fa fa-road"></i> Domicilio:</label>
-                            <input type="text" class="form-control" value="{{Emp.domicilio}}" name="domicilio" placeholder="Domicilio">
+                            <input type="text" class="form-control" value="{{Emp.domicilio}}" name="domicilio" ng-model="domicilio" placeholder="Domicilio">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="mr-2 fa fa-search-location"></i> Codigo Postal:</label>
-                            <input type="text" class="form-control" value="{{Emp.cp}}" name="cp" placeholder="CP">
+                            <input type="text" class="form-control" value="{{Emp.cp}}" name="cp" ng-model="cp" placeholder="CP">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class="mr-2 fa fa-phone"></i> Teléfono:</label>
-                            <input type="text" class="form-control" value="{{Emp.telefono}}" name="telefono" placeholder="Telefono">
+                            <input type="text" class="form-control" value="{{Emp.telefono}}" name="telefono" ng-model="telefono" placeholder="Telefono">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="exampleInputPassword1"><i class=" mr-2 fa fa-envelope"></i> Email:</label>
-                            <input type="email" class="form-control" value="{{Emp.email}}" name="email" placeholder="E-mail">
+                            <input type="email" ng-model="email" class="form-control" value="{{Emp.email}}" name="email" placeholder="E-mail">
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="col text-right ">
-                            <button type="submit" ng-click="RegistraEmpleado()" class=" btn btn-success"> <i class="fa fa-floppy-o mr-2"></i> Actualizar Empleado</button>
+                            <button type="button" ng-click="ModificaEmpleado()" class=" btn btn-success"> <i class="fa fa-floppy-o mr-2"></i> Actualizar Empleado</button>
                         </div>
                     </div>
                 </form>

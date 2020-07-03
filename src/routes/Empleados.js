@@ -55,6 +55,7 @@ route.post('/Empleados/id', async(req, res)=>{
         if(err){
             res.status(400).send({msg: "Mal"});
         }else{
+            //console.log(datos[0]);
             res.send({info: datos[0]});
         }
     });
@@ -79,7 +80,7 @@ route.post('/ActualizaEmpleado', (req, res)=>{
             console.log(err);
         }else{
             //res.sendFile(path.resolve('src/public/actualizaProducto.html'));
-            res.send("Se ah Actualizado el Empleado Correctamente");
+            res.send({msg: "Bien"});
         }
     })
    

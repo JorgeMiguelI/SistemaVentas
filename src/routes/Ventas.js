@@ -5,6 +5,41 @@ const pool= require('../server.js')
 const fs= require('fs');
 
 
+
+
+route.post('/DetalleVentas', function(req, res){
+   
+    const idventa = req.body.idventa;
+    
+    pool.query("SELECT * FROM venta_detalle d INNER JOIN "+
+     " refaccion r WHERE r.id_refaccion = d.id_refaccion AND d.id_venta = "+idventa+";", (err,result)=>{
+        if(err){
+            console.log(err);
+            res.status(400).send({msg: "Mal"});
+        }else{
+            res.send({info: result});
+        }
+    });
+    
+});
+
+
+route.post('/RegistroVenta', function(req, res){
+    const info= req.body;
+    //console.log(info);
+    pool.query('INSERT INTO venta SET ?', [info], (err, exit)=>{
+        if(err){
+            console.log(err);
+            res.status(400).send({msg: "Mal"});
+        }else{
+            //console.log(parseInt(exit.insertId));
+            res.send({info: exit.insertId} );
+        }
+    });
+    
+});
+
+
 route.get('/Ventas', function(req, res){
     //console.log(info);
     pool.query('SELECT * FROM venta', (err,result)=>{
