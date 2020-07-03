@@ -1,6 +1,8 @@
 //import Cliente from "./Clases/Cliente";
 
+
 var app = angular.module('app', ['ngRoute']);
+
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
@@ -15,6 +17,10 @@ app.config(function($routeProvider) {
         .when('/Ventas', {
             templateUrl: 'pages/Ventas.html',
             controller: 'ventasController'
+        })
+        .when('/verVentas', {
+            templateUrl: 'pages/verVentas.html',
+            controller: 'verVentasController'
         })
         .when('/AltaProducto', {
             templateUrl: 'pages/altaProducto.html',
@@ -60,6 +66,10 @@ app.config(function($routeProvider) {
             templateUrl: 'pages/verPedidosTalleres.html',
             controller: 'pedidosTallerController'
         })
+        .when('/estadisticas', {
+            templateUrl: 'pages/estadisticas.html',
+            controller: 'estadisticasController'
+        })
         .when('/surtirPedido', {
             templateUrl: 'pages/surtirPedidoTaller.html',
             controller: 'surtirController'
@@ -75,6 +85,120 @@ app.config(function($routeProvider) {
         });
 });
 //import Cliente from "./Clases/Cliente";
+app.controller('estadisticasController', function($scope, $http){
+  
+    var ventasEnero=0;
+    var ventasFebrero=0;
+    var ventasMarzo=0;
+    var ventasAbril=0;
+    var ventasMayo=0;
+    var ventasJunio=0;
+    var ventasJulio=0;
+    $http.get('/VentasEnero')
+    .then(
+        function(response){
+            ventasEnero=response.data.info;
+            $http.get('/VentasFebrero')
+            .then(
+                function(response){
+                    ventasFebrero=response.data.info;
+                    $http.get('/VentasMarzo')
+                    .then(
+                        function(response){
+                        ventasMarzo=response.data.info;
+                        $http.get('/VentasAbril')
+                        .then(
+                            function(response){
+                                ventasAbril=response.data.info;
+                                $http.get('/VentasMayo')
+                                .then(
+                                    function(response){
+                                        ventasMayo=response.data.info;
+                                        $http.get('/VentasJunio')
+                                        .then(
+                                            function(response){
+                                                ventasJunio=response.data.info;
+                                                $http.get('/VentasJulio')
+                                                .then(
+                                                    function(response){
+                                                        ventasJulio=response.data.info;
+                                                        var ctx = document.getElementById('canvas').getContext('2d');
+                                                        var myChart = new Chart(ctx, {
+                                                            type: 'bar',
+                                                            data: {
+                                                                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+                                                                datasets: [{
+                                                                    label: '$ Ventas Totales',
+                                                                    data: [ventasEnero, ventasFebrero, ventasMarzo, ventasAbril, ventasMayo, ventasJunio, ventasJulio],
+                                                                    backgroundColor: [
+                                                                    'rgba(255, 99, 132, 0.2)',
+                                                                    'rgba(54, 162, 235, 0.2)',
+                                                                    'rgba(255, 206, 86, 0.2)',
+                                                                    'rgba(75, 192, 192, 0.2)',
+                                                                    'rgba(153, 102, 255, 0.2)',
+                                                                    'rgba(255, 159, 64, 0.2)',
+                                                                    'rgba(255, 206, 86, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                    'rgba(255, 99, 132, 1)',
+                                                                    'rgba(54, 162, 235, 1)',
+                                                                    'rgba(255, 206, 86, 1)',
+                                                                    'rgba(75, 192, 192, 1)',
+                                                                    'rgba(153, 102, 255, 1)',
+                                                                    'rgba(255, 159, 64, 1)',
+                                                                    'rgba(255, 206, 86, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                            }]
+                                                        },
+                                                        options: {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            }
+                                                        }
+                                                    });
+                                                    },
+                                                    function(response){
+
+                                                    }
+                                                )
+                                        },
+                                        function(response){
+
+                                        }
+                                    )
+                                    },
+                                    function(response){
+
+                                    }
+                                )
+                            },
+                            function(response){
+
+                            }
+                        )
+                    },
+                    function(response){
+
+                    }
+                )
+                },
+                function(response){
+
+                }
+            )
+            
+        },
+        function(response){
+
+        }
+    )
+    
+})
 app.controller('detallesController', function($scope, $http) {
     var data = {
         idRefaccion: sessionStorage.getItem(10)
@@ -94,7 +218,11 @@ app.controller('detallesController', function($scope, $http) {
                     }));
             }
         )
+        $scope.regresar = function() {
+            window.location.href = "#!Ventas";
+        }
 });
+
 app.controller('pagosController', function($scope, $http) {
     $http.get('/pedidosTaller')
         .then(
@@ -1140,25 +1268,45 @@ app.controller('consultaRefax', function($scope, $http) {
                     text: 'No has seleccionado una categoría.',
                 }));
         } else {
-            var data = {
-                categoria: $scope.cat
-            };
-            $http.post('/refacciones/categoria', data)
-                .then(
-                    function(response) {
-                        document.getElementById('Refacciones').style.display = "flex";
-                        //alert('Todo bien');
-                        $scope.ProdsCategoria = response.data.info;
-                    },
-                    function(response) {
-                        $(document).ready(
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Ops',
-                                text: 'Algo salió mal ...',
-                            }));
-                    }
-                );
+            if($scope.cat =="Todas"){
+                $http.post('/Refacciones', data)
+                    .then(
+                        function(response) {
+                            document.getElementById('Refacciones').style.display = "flex";
+                            //alert('Todo bien');
+                            $scope.ProdsCategoria = response.data.info;
+                        },
+                        function(response) {
+                            $(document).ready(
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ops',
+                                    text: 'Algo salió mal ...',
+                                }));
+                        }
+                    );
+            }else{
+                var data = {
+                    categoria: $scope.cat
+                };
+                $http.post('/refacciones/categoria', data)
+                    .then(
+                        function(response) {
+                            document.getElementById('Refacciones').style.display = "flex";
+                            //alert('Todo bien');
+                            $scope.ProdsCategoria = response.data.info;
+                        },
+                        function(response) {
+                            $(document).ready(
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ops',
+                                    text: 'Algo salió mal ...',
+                                }));
+                        }
+                    );
+            }
+            
         }
     }
     $scope.getRefaccion = function() {
@@ -1362,13 +1510,13 @@ app.controller('ventasController', function($scope, $http) {
                                                             if (cont >= $scope.data.length - 1) {
                                                                 $scope.data = [];
                                                                 $scope.total = 0
-                                                                    // alert("La venta se ha registrado con exito");
                                                                 $(document).ready(
                                                                     Swal.fire({
                                                                         icon: 'success',
                                                                         title: 'Bien',
                                                                         text: 'La venta se ha registrado con éxito.',
                                                                     }));
+                                                                
                                                                 location.reload();
                                                             }
                                                         },
@@ -1431,6 +1579,7 @@ app.controller('ventasController', function($scope, $http) {
                             .then(
                                 function(response) {
                                     //alert("Regsitro Completo");
+                                    
                                     var data = {
                                         id_refaccion: detalleVenta.id_refaccion,
                                         cantidad: detalleVenta.total_articulos
@@ -1438,7 +1587,9 @@ app.controller('ventasController', function($scope, $http) {
                                     $http.post('/ActualizarExistencia', data)
                                         .then(
                                             function(response) {
-                                                //alert("Actualizacion Completo");
+                                                    
+                                                   
+                                            
                                             },
                                             function(response) {
                                                 // alert("Error al Actualizar los detalles de la venta");
@@ -1473,6 +1624,7 @@ app.controller('ventasController', function($scope, $http) {
                         }));
                 }
             );
+            window.location.href = "#!verVentas";
     }
 
     $scope.AgregarLista = function(idRefaccion) {
@@ -1514,7 +1666,8 @@ app.controller('ventasController', function($scope, $http) {
             idRefaccion: $scope.refaccion
         }
         if ($scope.refaccion == undefined || $scope.refaccion == "") {
-            $http.post('/Refacciones/categoria', data)
+            if($scope.categoria == "Todas"){
+                $http.post('/Refacciones', data)
                 .then(
                     function(response) {
                         $scope.Refacciones = response.data.info;
@@ -1528,6 +1681,23 @@ app.controller('ventasController', function($scope, $http) {
                             }));
                     }
                 );
+            }else{
+                $http.post('/Refacciones/categoria', data)
+                .then(
+                    function(response) {
+                        $scope.Refacciones = response.data.info;
+                    },
+                    function(response) {
+                        $(document).ready(
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ops',
+                                text: 'Algo salió mal.',
+                            }));
+                    }
+                );
+            }
+            
         } else {
             $http.post('/RefaccionesVenta/idRefaccion', data2)
                 .then(
@@ -1600,10 +1770,10 @@ app.controller('ventasController', function($scope, $http) {
                 $scope.total = 0;
                 for (var j = 0; j < $scope.data.length; j++) {
                     $scope.total += $scope.data[j].total;
+
                 }
                 //$scope.total+= $scope.data[i].precio;
                 $scope.total = parseFloat(dosDecimales($scope.total));
-
                 break;
             }
         }
@@ -1629,6 +1799,33 @@ app.controller('ventasController', function($scope, $http) {
     }
 
 });
+
+app.controller('verVentasController', function($scope, $http) {
+    $http.get('/Ventas', null)
+    .then(
+        function(response) {
+            $scope.Ventas = response.data.info;
+        }
+        
+    );
+
+    $scope.VerVenta = function(id_venta) {
+        $scope.idventarec = id_venta;
+        var data = {
+            idventa : id_venta
+        };
+        $http.post('/DetalleVentas', data)
+            .then(
+                function(response) {
+                   //Regresa los detalles del pedido
+                    $scope.datosVenta = response.data.info;
+                    
+                });
+           }
+
+});
+
+
 
 function dosDecimales(n) {
     let t = n.toString();

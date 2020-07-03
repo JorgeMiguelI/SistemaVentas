@@ -234,14 +234,15 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-bars"></i></span>
                                 <select class="form-control" ng-model="categoria" name="categoria">
-                                    <option value="">Categoria</option>
-                                    <option value="Afinacion">Afinacion</option>
-                                    <option value="Frenos">Frenos</option>
-                                    <option value="Suspension">Suspención</option>
-                                    <option value="Clutch">Clutch de Embrague</option>
-                                    <option value="Enfriamento">Enfriamento</option>
-                                    <option value="Motor">Ajuste de Motor</option>
-                                </select>
+                  <option value="Todas">Todas</option>
+                  <option value="Afinacion">Afinacion</option>
+                  <option value="Frenos">Frenos</option>
+                  <option value="Suspension">Suspención</option>
+                  <option value="Clutch">Clutch de Embrague</option>
+                  <option value="Enfriamento">Enfriamento</option>
+                  <option value="Motor">Ajuste de Motor</option>
+                </select>
+                            
                             </div>
                         </div>
                         <div class="col-5">
@@ -253,7 +254,7 @@
                                     </option>
                                 </select>
                             </div>
-                        </div>
+                 </div>
                         <div class="col-3">
                             <button type="button" class="btn btn-primary" ng-click="Search()"><i
                                     class="fas fa-search-plus"></i>
@@ -273,6 +274,9 @@
                                 <hr>
                                 <small class="text-center text-muted">Precio: </small>
                                 <h5 class="card-text">{{Refaccion.precio_venta | currency:"MXN$":2 }}</h5>
+                                <hr>
+
+                                <h5 class="card-text">({{Refaccion.existencia}})</h5>
                                 <hr>
                                 <button type="button" class="btn btn-outline-info mt-2 mb-2 btn-block"
                                     ng-click="verDetalles(Refaccion.id_refaccion)"><i

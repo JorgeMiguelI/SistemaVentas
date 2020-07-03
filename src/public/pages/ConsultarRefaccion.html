@@ -23,20 +23,22 @@
                         <div class="form-group col-md-5 animate__animated animate__fadeInUp">
                             <label for="categoria" class="font-poop"> <i class="fa fa-bars mr-2"></i> Categoria</label>
                             <select name="categoria" ng-model="cat" id="categoria" class="form-control font-poop">
-                                <option value="">Categoria</option>
+                                <option value=""></option>
+                                <option value="Todas">Todas</option>
                                 <option value="Afinacion">Afinacion</option>
                                 <option value="Frenos">Frenos</option>
                                 <option value="Suspension">Suspención</option>
                                 <option value="Clutch">Clutch de Embrague</option>
                                 <option value="Enfriamento">Enfriamento</option>
                                 <option value="Motor">Ajuste de Motor</option>
+                                
                             </select>
                         </div>
                         <div class="form-group col-md-5 animate__animated animate__fadeInUp ml-md-4">
                             <label for="refaccion" class="font-poop"> <i class="fa fa-tools mr-2"></i> Refaccion</label>
                             <select name="refaccion" id="refaccion" ng-model="refaccion" class="form-control font-poop">
                                <option value="">Nombre de la refaccion</option>
-                               <option value="{{Ref.id_refaccion}}" ng-repeat="Ref in Refax">{{Ref.nombre}}</option>
+                               <option value="{{Ref.id_refaccion}}" ng-repeat="Ref in ProdsCategoria">{{Ref.nombre}}</option>
                            </select>
                         </div>
                     </div>

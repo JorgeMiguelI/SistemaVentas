@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar ventas</title>
+</head>
+
+<body ng-controller="verVentasController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Consultar Ventas</h1>
+                <br>
+                <div class="row" id="">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"># de venta</th>
+                                    <th scope="col">Empleado</th>
+                                    <th scope="col">RFC cliente</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="Venta in Ventas">
+                                    <th scope="row">{{Venta.id_venta}}</th>
+                                    <td>{{Venta.id_empleado}}</td>
+                                    <td>{{Venta.rfc_cliente}}</td>
+                                    <td>{{Venta.fecha | date:'mediumDate'}}</td>
+                                    <td>{{Venta.monto | currency:"MXN$":2}}</td>
+                                    <td> <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                            data-target="#verDetalles" ng-click="VerVenta(Venta.id_venta)">Ver
+                                            Detalles</button>
+                                        <div class="modal fade" id="verDetalles">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h2><b>Venta desglozada</b></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h3 style="background-color: cornflowerblue;">
+                                                                    Refaccionaria AutoRefax</h3>
+                                                                <p>Aguascalientes, Aguascalientes</p>
+                                                                <p>Carmen de Luna Sevilla #210, 48768</p>
+                                                                <p>449-214-89-78</p>
+                                                                <br>
+                                                                <h3 style="background-color: cornflowerblue;">Detalle
+                                                                    refacciones</h3>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <table class="table">
+                                                                    <thead class="thead-dark">
+                                                                        <tr>
+                                                                            <th scope="col">Refaccion</th>
+                                                                            <th scope="col">Imagen</th>
+                                                                            <th scope="col">Cantidad</th>
+                                                                            <th scope="col">Precio Unitario</th>
+                                                                            <th scope="col">Total</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <!-- nombre, imagen, total_articulos, precio_venta-->
+                                                                    <tbody>
+                                                                        <tr ng-repeat="datoVenta in datosVenta">
+                                                                            <td>{{datoVenta.nombre}}</td>
+                                                                            <td>
+                                                                                <img src="../images/{{datoVenta.imagen}}"
+                                                                                    class="card-img-top" width="60px"
+                                                                                    height="60px">
+                                                                            </td>
+                                                                            <td>{{datoVenta.total_articulos}}</td>
+                                                                            <td>{{datoVenta.precio_venta }}</td>
+                                                                            <td>{{datoVenta.total_articulos * datoVenta.precio_venta}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-danger"
+                                                            data-dismiss="modal">Salir</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
