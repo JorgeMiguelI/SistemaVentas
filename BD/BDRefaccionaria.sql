@@ -90,7 +90,7 @@ CREATE TABLE `empleado` (
   `fecha_nacimiento` varchar(10) DEFAULT NULL,
   `cp` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_empleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES (1,'Jazmin Del Rosario','Ags','Ags','Heroes de Nacozari #30','449-230-90-90','JazzMarin@gmail.com','040998','45678'),(2,'admin','Jalisco','Ojuelos','Lazaro Cardenaz#9','496-102-36-34','admin@gmail.com','admin','47540'),(3,'Jorge Miguel Ibarra Ortiz','Jalisco','Ojuelos','Carmen de Luna Sevilla #210','496-102-36-34','jorgemgibarraortiz@gmail.com','04091997','47540');
+INSERT INTO `empleado` VALUES (1,'Jazmin Del Rosario','Aguascalientes','Aguascalientes','Heroes de Nacozari #30','449-230-90-90','JazzMarin@gmail.com','040998','45675'),(2,'admin','Jalisco','Ojuelos','Lazaro Cardenaz#9','496-102-36-34','admin','admin','47540'),(3,'Jorge Miguel Ibarra Ortiz','Jalisco','Ojuelos','Carmen de Luna Sevilla #210','496-102-36-39','jorgemgibarraortiz@gmail.com','04091997','47545'),(5,'Jesus Humberto Bernal Lopez','Aguascalientes','Aguascalientes','Pino Suarez #210','449-254-69-78','Humberto@gmail.com','01101998','67549');
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `pedidotaller` (
 
 LOCK TABLES `pedidotaller` WRITE;
 /*!40000 ALTER TABLE `pedidotaller` DISABLE KEYS */;
-INSERT INTO `pedidotaller` VALUES (1,'2020-06-09 03:19:25','N','TALLER','S',5250.85);
+INSERT INTO `pedidotaller` VALUES (1,'2020-06-09 03:19:25','N','TALLER','S',5250.85),(2,'2020-07-03 02:35:24','N','TALLER','N',1520.25),(3,'2020-05-21 03:24:11','N','TALLER','N',5800.45);
 /*!40000 ALTER TABLE `pedidotaller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,16 +282,16 @@ DROP TABLE IF EXISTS `refaccion`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `refaccion` (
   `id_refaccion` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
+  `nombre` varchar(300) DEFAULT NULL,
   `Descripcion` text,
   `Precio_compra` decimal(10,2) DEFAULT NULL,
   `precio_venta` decimal(10,2) DEFAULT NULL,
   `existencia` int DEFAULT NULL,
-  `imagen` varchar(45) DEFAULT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
   `categoria` varchar(45) DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id_refaccion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +300,7 @@ CREATE TABLE `refaccion` (
 
 LOCK TABLES `refaccion` WRITE;
 /*!40000 ALTER TABLE `refaccion` DISABLE KEYS */;
-INSERT INTO `refaccion` VALUES (1,'Filtro de aire gonher ga323m','FILTRO DE AIRE GONHER PARA PONTIAC MATIZ G2 1L L4 06-10 ',169.00,220.92,17,'Amortiguador de Gas 2007-2012.png','Afinacion','S'),(2,'Filtro de aire gonher ga323m','FILTRO DE AIRE GONHER PARA PONTIAC MATIZ G2 1L L4 06-10 ',169.00,220.92,18,'Bomba de Aceite 2007-1013.png','Afinacion','S'),(3,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,5,'flecha Homocinetica Delantera 2007-2012.png','Frenos','S'),(4,'Amortiguador excel-g kyb 332502k','AMORT EXCEL KYB DOD I10 12-13 AMORTIGUADOR EXCEL-G KYB DELANTERO DERECHO E IZQUIERDO PARA DODGE I10 1.1L L4 2012-2013',1001.00,1800.11,100,'Cilindro de frenos 2007- 2011.png','Suspension','S'),(5,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,2,'flecha Homocinetica Delantera 2007-2012.png','Frenos','S'),(6,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,27,'flecha Homocinetica Delantera 2007-2012.png','Frenos','S');
+INSERT INTO `refaccion` VALUES (1,'Filtro de aire gonher ga323m','FILTRO DE AIRE GONHER PARA PONTIAC MATIZ G2 1L L4 06-10 ',169.00,220.92,29,'Amortiguador de Gas 2007-2012.png','Afinacion','N'),(2,'Filtro de aire gonher ga323m','FILTRO DE AIRE GONHER PARA PONTIAC MATIZ G2 1L L4 06-10 ',169.00,220.92,30,'Bomba de Aceite 2007-1013.png','Afinacion','S'),(3,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,4,'flecha Homocinetica Delantera 2007-2012.png','Frenos','S'),(4,'Amortiguador excel-g kyb 332502k','AMORT EXCEL KYB DOD I10 12-13 AMORTIGUADOR EXCEL-G KYB DELANTERO DERECHO E IZQUIERDO PARA DODGE I10 1.1L L4 2012-2013',1001.00,1800.11,100,'Cilindro de frenos 2007- 2011.png','Suspension','S'),(5,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,2,'flecha Homocinetica Delantera 2007-2012.png','Frenos','N'),(6,'Manguera para frenos lusac lc38893','MANGUERA PARA FRENOS LUSAC PARA CHRYSLER DODGE DAKOTA 91-96 DEL IZQ USA',299.00,407.73,27,'flecha Homocinetica Delantera 2007-2012.png','Frenos','N'),(7,'filtro de aire gp1 5496gp','filtro de aire gp1 para chevrolet chevy 1.6l l4 1994-2003- pick up 1.6l l4 1994-2003',125.00,452.00,20,'filtro de aire gp1 5496gp.jpg','Afinacion','S'),(8,'filtro de aire gonher ga323m','filtro de aire gonher para pontiac matiz g2 1l l4 06-10 ',258.00,878.55,40,'filtro de aire gonher ga323m.jpg','Afinacion','S'),(9,'bujia de encendido champion 3407','bujia de encendido champion para e150 club wagon 4.2l l6 1995-1995 e250 club wagon 4.2l v6 1998-1999 e150 econoline van 4.2l v6 2001-2003 e150 econoline van 4.2l v6 1998-2000 econoline wagon 4.2l v6 2004-2004 4.2l v6 1999-2004 escort 1.9l l4 1994-199',125.25,200.00,80,'bujia de encendido champion 3407.jpg','Afinacion','S'),(10,'bujia de encendido ngk c7hsa','bujia de encendido ngk para big dog motorcycle boxer 98-01/kymco motorcycle people 125 99-02',45.00,87.90,100,'bujia de encendido ngk c7hsa.jpg','Afinacion','S'),(11,'balata freno de disco remsa 7106ad257rms','balata freno de disco delantero ford ghia 1991-1994 ford topaz 1994-1994, izquierda y derecha',127.45,358.52,24,'balata freno de disco remsa 7106ad257rms.jpg','Frenos','S'),(12,'balata freno de disco remsa 7111d145arms','balata freno de disco delantero 560sel 300se 380sel 1989-1991, lado derecho e izquierdo',325.50,689.42,33,'balata freno de disco remsa 7111d145arms.jpg','Frenos','S'),(13,'manguera para frenos lusac lc1126','manguera para frenos lusac para vam del jeep cj-5 70-77 willis cj5d 74-77',254.48,690.45,30,'manguera para frenos lusac lc1126.PNG','Frenos','S'),(14,'amortiguador excel-g kyb 332502k','amort excel kyb dod i10 12-13 amortiguador excel-g kyb delantero derecho e izquierdo para dodge i10 1.1l l4 2012-2013',1000.50,1800.45,30,'amortiguador excel-g kyb 332502k.PNG','Suspension','S'),(15,'amortiguador hidraulico boge 35020','amoriguador hidraulico boge trasero para nissan urvan 1999-2007- pickup 4x2 1986-1992- dodge ram 50 1979-1991- chevrolet p20 1968-1989- toyota pickup 1984-1994, lado derecgo e izquierdo',290.50,500.35,25,'amortiguador hidraulico boge 35020.jpg','Suspension','S');
 /*!40000 ALTER TABLE `refaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +328,7 @@ CREATE TABLE `refaccion_pedidotaller` (
 
 LOCK TABLES `refaccion_pedidotaller` WRITE;
 /*!40000 ALTER TABLE `refaccion_pedidotaller` DISABLE KEYS */;
-INSERT INTO `refaccion_pedidotaller` VALUES (1,1,2),(2,1,4),(5,1,2),(6,1,3);
+INSERT INTO `refaccion_pedidotaller` VALUES (1,1,2),(2,1,4),(2,3,4),(5,1,2),(6,1,3),(10,2,3),(10,3,2),(11,2,2),(11,3,1),(14,2,6),(15,2,1),(15,3,9);
 /*!40000 ALTER TABLE `refaccion_pedidotaller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +350,7 @@ CREATE TABLE `venta` (
   KEY `fk_Venta_Cliente_idx` (`rfc_cliente`),
   CONSTRAINT `fk_Venta_Cliente` FOREIGN KEY (`rfc_cliente`) REFERENCES `cliente` (`rfc_cliente`),
   CONSTRAINT `fk_Venta_Empleado1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +359,7 @@ CREATE TABLE `venta` (
 
 LOCK TABLES `venta` WRITE;
 /*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-INSERT INTO `venta` VALUES (30,'2020-05-25',3115.62,1,'JMGR'),(37,'2020-06-02',674.81,1,'RAC'),(38,'2020-06-02',46.16,1,'AAAAA'),(39,'2020-06-02',46.16,1,'jhkhj'),(40,'2020-06-02',46.16,1,'AAAAA'),(41,'2020-06-02',46.16,1,'jhkhj'),(42,'2020-06-02',46.16,1,'AAAAA'),(43,'2020-06-02',46.16,1,'HBL12345'),(44,'2020-06-02',46.16,1,'HBL12345'),(45,'2020-06-02',46.16,1,'HBL12345'),(46,'2020-06-02',46.16,1,'jhkhj'),(47,'2020-06-02',46.16,1,'jhkhj'),(48,'2020-06-02',46.16,1,'JMIO12345'),(49,'2020-06-02',267.08,1,'JMGR'),(50,'2020-06-09',895.73,1,'JMIO12345'),(51,'2020-06-09',628.65,1,'HBL12345'),(53,'2020-06-12',670.00,1,'AAAAA'),(54,'2020-06-18',500.05,1,'JMGR'),(55,'2020-06-30',220.92,1,'JMGR'),(56,'2020-06-30',220.92,1,'JMIO12345'),(57,'2020-06-30',220.92,1,'JMGR'),(58,'2020-06-30',441.84,1,'RAC'),(59,'2020-06-30',441.84,1,'TALLER'),(60,'2020-06-30',441.84,1,'RAC');
+INSERT INTO `venta` VALUES (30,'2020-01-25',3115.62,1,'JMGR'),(37,'2020-01-02',674.81,1,'RAC'),(38,'2020-02-02',46.16,1,'AAAAA'),(39,'2020-02-02',46.16,1,'jhkhj'),(40,'2020-03-02',46.16,1,'AAAAA'),(41,'2020-03-02',46.16,1,'jhkhj'),(42,'2020-04-02',46.16,1,'AAAAA'),(43,'2020-04-02',46.16,1,'HBL12345'),(44,'2020-05-02',46.16,1,'HBL12345'),(45,'2020-05-02',46.16,1,'HBL12345'),(46,'2020-05-02',46.16,1,'jhkhj'),(47,'2020-05-02',46.16,1,'jhkhj'),(48,'2020-05-02',46.16,1,'JMIO12345'),(49,'2020-06-02',267.08,1,'JMGR'),(50,'2020-06-09',895.73,1,'JMIO12345'),(51,'2020-06-09',628.65,1,'HBL12345'),(53,'2020-06-12',670.00,1,'AAAAA'),(54,'2020-06-18',500.05,1,'JMGR'),(55,'2020-07-30',220.92,1,'JMGR'),(56,'2020-06-30',220.92,1,'JMIO12345'),(57,'2020-07-30',220.92,1,'JMGR'),(58,'2020-07-30',441.84,1,'RAC'),(59,'2020-06-30',441.84,1,'TALLER'),(60,'2020-06-30',441.84,1,'RAC'),(61,'2020-07-02',628.65,1,'JMGR');
 /*!40000 ALTER TABLE `venta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +387,7 @@ CREATE TABLE `venta_detalle` (
 
 LOCK TABLES `venta_detalle` WRITE;
 /*!40000 ALTER TABLE `venta_detalle` DISABLE KEYS */;
-INSERT INTO `venta_detalle` VALUES (30,1,2),(30,3,3),(30,4,1),(37,1,1),(37,2,1),(37,3,1),(38,1,1),(39,1,1),(40,1,1),(41,1,1),(42,1,1),(43,1,1),(44,1,1),(45,1,1),(46,1,1),(47,1,1),(48,1,1),(49,1,1),(49,2,1),(50,1,1),(50,2,2),(50,3,1),(51,2,1),(51,3,1),(54,1,2),(54,3,1),(55,1,1),(56,1,1),(57,1,1),(60,2,2);
+INSERT INTO `venta_detalle` VALUES (30,1,2),(30,3,3),(30,4,1),(37,1,1),(37,2,1),(37,3,1),(38,1,1),(39,1,1),(40,1,1),(41,1,1),(42,1,1),(43,1,1),(44,1,1),(45,1,1),(46,1,1),(47,1,1),(48,1,1),(49,1,1),(49,2,1),(50,1,1),(50,2,2),(50,3,1),(51,2,1),(51,3,1),(54,1,2),(54,3,1),(55,1,1),(56,1,1),(57,1,1),(60,2,2),(61,1,1),(61,3,1);
 /*!40000 ALTER TABLE `venta_detalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-30  1:54:37
+-- Dump completed on 2020-07-03 13:01:24
