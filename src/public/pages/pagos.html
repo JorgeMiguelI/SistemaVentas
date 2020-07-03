@@ -37,10 +37,11 @@
                         <input type="number" ng-model="totalpagoregistrar" class="form-control" placeholder="Total a registrar">
                       </div>
                       <div class="col-3">
-                        <button type="button" class="btn btn-primary" ng-click="RegistrarPago()">Registrar Pago</button>
+                        <button type="button" class="btn btn-primary" ng-click="RegistrarPago()">Abonar</button>
                       </div>
                     </div>
                   </form>
+                  <br>
             </div>
             <br><br><br>
       
@@ -60,13 +61,13 @@
                 <tbody>
                   <tr>
                     <th scope="row">{{PedidoTaller.id_pedido}}</th>
-                    <td>{{PedidoTaller.fecha}}</td>
+                    <td>{{PedidoTaller.fecha | date:'mediumDate'}}</td>
                     <td>{{PedidoTaller.estatus_pago}}</td>
                     <td>{{PedidoTaller.status_surtido}}</td>
                     <td>{{PedidoTaller.rfc_cliente}}</td>
-                    <td>${{PedidoTaller.total_pagar}}</td>
-                    <td>{{totalPagado}}</td>
-                    <td>{{totalFaltante}}</td>
+                    <td>{{PedidoTaller.total_pagar | currency:"$":2}}</td>
+                    <td>{{totalPagado | currency:"$":2}}</td>
+                    <td>{{totalFaltante | currency:"$":2}}</td>
                   </tr>
                   
                   

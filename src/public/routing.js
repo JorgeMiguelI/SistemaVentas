@@ -218,7 +218,11 @@ app.controller('detallesController', function($scope, $http) {
                     }));
             }
         )
+        $scope.regresar = function() {
+            window.location.href = "#!Ventas";
+        }
 });
+
 app.controller('pagosController', function($scope, $http) {
     $http.get('/pedidosTaller')
         .then(
@@ -1575,6 +1579,7 @@ app.controller('ventasController', function($scope, $http) {
                             .then(
                                 function(response) {
                                     //alert("Regsitro Completo");
+                                    
                                     var data = {
                                         id_refaccion: detalleVenta.id_refaccion,
                                         cantidad: detalleVenta.total_articulos
@@ -1619,6 +1624,7 @@ app.controller('ventasController', function($scope, $http) {
                         }));
                 }
             );
+            window.location.href = "#!verVentas";
     }
 
     $scope.AgregarLista = function(idRefaccion) {
