@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar ventas</title>
+</head>
+<body ng-controller="verVentasController">
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Consultar Ventas</h1>
+                <br>
+                <div class="row" id="">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col"># de venta</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">RFC cliente</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Detalles</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="Venta in Ventas">
+                                <th scope="row">{{Venta.id_venta}}</th>
+                                <td>{{Venta.id_empleado}}</td>
+                                <td>{{Venta.rfc_cliente}}</td>
+                                <td>{{Venta.fecha | date:'mediumDate'}}</td>
+                                <td>{{Venta.monto | currency:"MXN$":2}}</td>
+                                <td> <button type="button" class="btn btn-outline-primary">Ver Detalles</button> </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,22 @@ const path= require('path');
 const pool= require('../server.js')
 const fs= require('fs');
 
+
+route.get('/Ventas', function(req, res){
+    //console.log(info);
+    pool.query('SELECT * FROM venta', (err,result)=>{
+        if(err){
+            console.log(err);
+            res.status(400).send({msg: "Mal"});
+        }else{
+            //console.log(parseInt(exit.insertId));
+            res.send({info: result} );
+        }
+    });
+    
+});
+
+
 route.post('/RegistroVenta', function(req, res){
     const info= req.body;
     //console.log(info);
@@ -40,5 +56,6 @@ function RegistraDetalleVenta(req){
         }
     });
 }
+
 
 module.exports= route;
