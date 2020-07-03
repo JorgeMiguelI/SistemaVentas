@@ -38,8 +38,8 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'root',
-    password: 'AnEtCMkqf3cqn1Ro',
-    port: 3308,
+    password: 'AnEtCMkqf3cqn1Ro', //
+    port: 3308, //
     database: 'bdrefaccionaria'
 });
 
