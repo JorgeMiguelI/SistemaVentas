@@ -121,7 +121,6 @@ app.controller('estadisticasController', function($scope, $http){
                                                 $http.get('/VentasJulio')
                                                 .then(
                                                     function(response){
-                                                        alert("llegue")
                                                         ventasJulio=response.data.info;
                                                         var ctx = document.getElementById('canvas').getContext('2d');
                                                         var myChart = new Chart(ctx, {
@@ -1801,6 +1800,21 @@ app.controller('verVentasController', function($scope, $http) {
         }
         
     );
+
+    $scope.VerVenta = function(id_venta) {
+        $scope.idventarec = id_venta;
+        var data = {
+            idventa : id_venta
+        };
+        $http.post('/DetalleVentas', data)
+            .then(
+                function(response) {
+                   //Regresa los detalles del pedido
+                    $scope.datosVenta = response.data.info;
+                    
+                });
+           }
+
 });
 
 

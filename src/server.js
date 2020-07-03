@@ -30,7 +30,7 @@ app.use(multer({
 }).single('image'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(morgan("dev")); //Este middleware sirve para ver el estatus de los req
+app.use(morgan("dev")); //Este middleware sirve para ver el estatus de los req
 //-----------------------------------------------------------
 
 
@@ -40,8 +40,8 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'root',
-    password: 'Hola123',
-    port: 3304,
+    password: 'password',
+    port: 3306,
     //password: 'AnEtCMkqf3cqn1Ro', //
     //port: 3308, //
 
